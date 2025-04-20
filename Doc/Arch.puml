@@ -1,0 +1,93 @@
+@startuml Architecture Overview
+
+' Define actor component template as a stereotype
+skinparam componentStyle rectangle
+
+rectangle "Actor Template" as ActorTemplate <<stereotype>> {
+    component "LogicInput" as TemplateInput
+    component "Model" as TemplateModel
+    component "AnimationStateMachine" as TemplateASM
+    component "Physics" as TemplatePhysics
+    component "AI" as TemplateAI
+
+    TemplateInput -> TemplateASM
+    TemplateAI -> TemplateInput
+}
+
+hide ActorTemplate
+
+' Layout hints for vertical alignment
+together {
+    package "Scene" {
+        rectangle "Actor1" as Actor1 #palegreen {
+            component "LogicInput" as Input1
+            component "Model" as Model1
+            component "AnimationStateMachine" as ASM1
+            component "Physics" as Physics1
+            ' component "AI" as AI1
+
+            Input1 -> ASM1
+            ASM1 -> Model1
+            ' AI1 --> Input1
+        }
+
+        rectangle "Actor2" as Actor2 #pink {
+            component "LogicInput" as Input2
+            component "Model" as Model2
+            component "AnimationStateMachine" as ASM2
+            component "Physics" as Physics2
+            component "AI" as AI2
+
+            Input2 -> ASM2
+            ASM2 -> Model2
+            AI2 -> Input2
+        }
+
+        rectangle "Actor3" as Actor3 #pink {
+            component "LogicInput" as Input3
+            component "Model" as Model3
+            component "AnimationStateMachine" as ASM3
+            component "Physics" as Physics3
+            component "AI" as AI3
+
+            Input3 -> ASM3
+            ASM3 -> Model3
+            AI3 -> Input3
+        }
+    }
+}
+
+' Force vertical layout
+Actor1 -[hidden]-> Actor2
+Actor2 -[hidden]-> Actor3
+
+[PlayerInputController] #orange
+component "Camera" as Camera #yellow
+
+' Relationships
+[PlayerInputController] --> Input1 : Controls
+[PlayerInputController] --> Camera : Controls
+Camera --> Actor1 : Follows
+
+' note right of [InputManager]
+' Handles player input
+' from keyboard, mouse,
+' and controllers
+' end note
+
+' note right of Camera
+' Follows Actor1 position
+' and handles screen rendering
+' end note
+
+' note bottom of Scene
+' Contains all active game entities
+' that exist in the current level
+' end note
+
+' note right of AI1
+' Inactive when InputManager 
+' controls the LogicInput
+' end note
+
+@enduml

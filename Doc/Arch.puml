@@ -45,24 +45,11 @@ together {
             Model2 -> Physics2 : RootMotion
         }
 
-        rectangle "Actor3" as Actor3 #pink {
-            component "LogicInput" as Input3
-            component "Model" as Model3
-            component "AnimationStateMachine" as ASM3
-            component "Character Controller" as Physics3
-            component "AI" as AI3
-
-            Input3 -> ASM3
-            ASM3 -> Model3
-            AI3 -> Input3
-            Model3 -> Physics3 : RootMotion
-        }
     }
 }
 
 ' Force vertical layout
 Actor1 -[hidden]-> Actor2
-Actor2 -[hidden]-> Actor3
 
 [PlayerInputController] #orange
 component "Camera" as Camera #yellow

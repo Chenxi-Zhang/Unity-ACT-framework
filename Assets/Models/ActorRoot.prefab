@@ -57,6 +57,8 @@ GameObject:
   - component: {fileID: 5236835919920874985}
   - component: {fileID: 2609364236034990598}
   - component: {fileID: 7768682964656669747}
+  - component: {fileID: 4708077285437426794}
+  - component: {fileID: 6815510012680823109}
   m_Layer: 0
   m_Name: ActorRoot
   m_TagString: Untagged
@@ -94,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logicInput: {fileID: 7768682964656669747}
   movement: {fileID: 6809415184723294467}
+  actionPlayableDirector: {fileID: 4708077285437426794}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -132,3 +135,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+--- !u!114 &4708077285437426794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f110267586eeb44affa783d416a38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 6815510012680823109}
+  Idle: {fileID: 11400000, guid: b9c24970ba2e8e946941ca783bd0b501, type: 2}
+--- !u!320 &6815510012680823109
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []

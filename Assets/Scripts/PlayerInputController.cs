@@ -14,6 +14,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
     private InputSystem_Actions actions;
 
     Vector2 rawMove;
+    float distance;
 
     void Awake()
     {
@@ -54,7 +55,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
         {
             return;
         }
-        controllingActor.logicInput.InputMove(ConvertFromCameraLocalToWorld(rawMove));
+        controllingActor.logicInput.InputMove(ConvertFromCameraLocalToWorld(rawMove), distance);
     }
 
     private Vector3 ConvertFromCameraLocalToWorld(Vector2 move)
@@ -76,6 +77,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
     public void OnMove(InputAction.CallbackContext context)
     {
         rawMove = context.ReadValue<Vector2>();
+        distance = rawMove.magnitude;
     }
 
     public void OnAttack(InputAction.CallbackContext context)

@@ -31,7 +31,10 @@ public class ActionTransitionClip : PlayableBehaviour
         if (isPlaying)
             return;
         isPlaying = true;
-        actor = info.output.GetUserData() as Actor;
+        var director = playable.GetGraph().GetResolver() as PlayableDirector;
+        if (director == null)
+            return;
+        actor = director.GetComponent<Actor>();
         if (actor == null)
             return;
         actor.logicInput.RegisterInputAction(inputType, OnInputTriggered);

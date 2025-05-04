@@ -251,6 +251,18 @@ PrefabInstance:
       propertyPath: m_PlayableAsset
       value: 
       objectReference: {fileID: 11400000, guid: b9c24970ba2e8e946941ca783bd0b501, type: 2}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].key
+      value: 
+      objectReference: {fileID: -6925119721444344210, guid: 1ff2770dae77998468f032e74b43f312, type: 2}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].value
+      value: 
+      objectReference: {fileID: 533271111}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -547,6 +559,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!95 &533271111 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3823617985890130813, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+  m_PrefabInstance: {fileID: 198928954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

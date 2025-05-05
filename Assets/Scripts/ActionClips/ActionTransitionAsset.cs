@@ -1,12 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public class ActionTransitionAsset : PlayableAsset
 {
     public InputType inputType;
-    public TimelineAsset action;
+    public ActionTimelineAsset action;
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
@@ -21,7 +19,7 @@ public class ActionTransitionAsset : PlayableAsset
 public class ActionTransitionClip : PlayableBehaviour
 {
     public InputType inputType;
-    public TimelineAsset action;
+    public ActionTimelineAsset action;
 
     Actor actor;
 

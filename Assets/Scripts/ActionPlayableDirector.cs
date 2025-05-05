@@ -1,15 +1,13 @@
-using System;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public class ActionPlayableDirector : MonoBehaviour
 {
     public PlayableDirector playableDirector;
-    public TimelineAsset Idle;
+    public ActionTimelineAsset Idle;
     public ActorMovement actorMovement;
 
-    private TimelineAsset playingAction;
+    private ActionTimelineAsset playingAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,19 +18,29 @@ public class ActionPlayableDirector : MonoBehaviour
 
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
-        PlayAction(Idle);
+        if (playingAction.loop)
+        {
+            PlayAction(playingAction);
+        }
+        else
+        {
+            if (playingAction.next != null)
+                PlayAction(playingAction.next);
+            else
+                PlayAction(Idle);
+        }
     }
 
-    public void PlayAction(TimelineAsset action)
+    public void PlayAction(ActionTimelineAsset action)
     {
         actorMovement.ResetRotation();
-        playableDirector.Play(action);
+        playableDirector.Play(action.TimelineAsset);
         playingAction = action;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

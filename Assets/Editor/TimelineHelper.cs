@@ -16,6 +16,13 @@ class TimelineHelper
         var asset = EditorUtility.InstanceIDToObject(instanceID) as TimelineAsset;
         if (asset == null)
             return false;
+        SelectDirector(asset);
+        // true表示我们已处理此资源，这里返回false，让TimelineWindow继续处理
+        return false;
+    }
+
+    public static void SelectDirector(TimelineAsset asset)
+    {
         var director = FindPlayableDirector();
         if (director != null)
         {
@@ -23,8 +30,6 @@ class TimelineHelper
             EditorGUIUtility.PingObject(director.gameObject);
             director.playableAsset = asset;
         }
-        // true表示我们已处理此资源，这里返回false，让TimelineWindow继续处理
-        return false;
     }
 
     private static PlayableDirector FindPlayableDirector()

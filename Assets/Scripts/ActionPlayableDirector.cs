@@ -7,6 +7,7 @@ public class ActionPlayableDirector : MonoBehaviour
 {
     public PlayableDirector playableDirector;
     public TimelineAsset Idle;
+    public ActorMovement actorMovement;
 
     private TimelineAsset playingAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,16 +15,17 @@ public class ActionPlayableDirector : MonoBehaviour
     {
         playableDirector.extrapolationMode = DirectorWrapMode.None;
         playableDirector.stopped += OnPlayableDirectorStopped;
-        playableDirector.Play(Idle);
+        PlayAction(Idle);
     }
 
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
-        playableDirector.Play(Idle);
+        PlayAction(Idle);
     }
 
     public void PlayAction(TimelineAsset action)
     {
+        actorMovement.ResetRotation();
         playableDirector.Play(action);
         playingAction = action;
     }

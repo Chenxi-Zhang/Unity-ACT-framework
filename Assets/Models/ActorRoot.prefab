@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83101244621102021}
   - component: {fileID: 6809415184723294467}
+  - component: {fileID: 9120122603904476910}
   m_Layer: 0
   m_Name: ModelRoot
   m_TagString: Untagged
@@ -45,6 +46,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+--- !u!95 &9120122603904476910
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765375162966618575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8462858482721576458
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 6815510012680823109}
   Idle: {fileID: 11400000, guid: b9c24970ba2e8e946941ca783bd0b501, type: 2}
+  actorMovement: {fileID: 6809415184723294467}
 --- !u!320 &6815510012680823109
 PlayableDirector:
   m_ObjectHideFlags: 0

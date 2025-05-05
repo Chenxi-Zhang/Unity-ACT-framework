@@ -1,10 +1,24 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class Actor : MonoBehaviour
 {
     public ActorLogicInput logicInput;
     public ActorMovement movement;
     public ActionPlayableDirector actionPlayableDirector;
+
+    private CharacterController _characterController;
+    public CharacterController characterController
+    {
+        get
+        {
+            if (_characterController == null)
+            {
+                _characterController = GetComponent<CharacterController>();
+            }
+            return _characterController;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

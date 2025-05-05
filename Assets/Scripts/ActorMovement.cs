@@ -1,9 +1,24 @@
+using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class ActorMovement : MonoBehaviour
 {
     public Actor actor;
+    private Animator _animator;
+    public Animator animator
+    {
+        get
+        {
+            if (_animator == null)
+            {
+                _animator = GetComponent<Animator>();
+            }
+            return _animator;
+        }
+    }
 
+    Vector3 velocity = Vector3.zero;
     Quaternion rotation = Quaternion.identity;
 
     // 由输入调用的旋转
@@ -29,5 +44,27 @@ public class ActorMovement : MonoBehaviour
 
     void Update() {
         actor.transform.rotation = rotation;
+    }
+
+    void OnAnimatorMove()
+    {
+        var deltaPos = animator.deltaPosition;
+        var deltaRot = animator.deltaRotation;
+        transform.localRotation *= deltaRot;
+        actor.characterController.Move(deltaPos);
+        if (actor.characterController.isGrounded)
+        {
+            velocity = Vector3.zero;
+        }
+        else
+        {
+            velocity += Physics.gravity * Time.deltaTime;
+            actor.characterController.Move(velocity * Time.deltaTime);
+        }
+    }
+
+    internal void ResetRotation()
+    {
+        transform.localRotation = Quaternion.identity;
     }
 }

@@ -16,38 +16,23 @@ public class ActionTransitionAsset : PlayableAsset
     }
 }
 
-public class ActionTransitionClip : PlayableBehaviour
+public class ActionTransitionClip : ActionClipBase
 {
     public InputType inputType;
     public ActionTimelineAsset action;
 
-    Actor actor;
-
-    bool isPlaying = false;
-    public override void OnBehaviourPlay(Playable playable, FrameData info)
+    public override void OnActionPlay()
     {
-        if (isPlaying)
-            return;
-        isPlaying = true;
-        var director = playable.GetGraph().GetResolver() as PlayableDirector;
-        if (director == null)
-            return;
-        actor = director.GetComponent<Actor>();
-        if (actor == null)
-            return;
         actor.logicInput.RegisterInputAction(inputType, OnInputTriggered);
     }
 
-    private void OnInputTriggered()
+    void OnInputTriggered()
     {
         actor.actionPlayableDirector.PlayAction(action);
     }
 
-    public override void OnBehaviourPause(Playable playable, FrameData info)
+    public override void OnActionPause()
     {
-        if (!isPlaying)
-            return;
-        isPlaying = false;
         actor.logicInput.UnregisterInputAction(inputType);
     }
 }

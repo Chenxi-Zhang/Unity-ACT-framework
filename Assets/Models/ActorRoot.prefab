@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 7768682964656669747}
   - component: {fileID: 4708077285437426794}
   - component: {fileID: 6815510012680823109}
+  - component: {fileID: 6352356825172373307}
   m_Layer: 0
   m_Name: ActorRoot
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   logicInput: {fileID: 7768682964656669747}
   movement: {fileID: 6809415184723294467}
   actionPlayableDirector: {fileID: 4708077285437426794}
+  animationSimpleBlender: {fileID: 6352356825172373307}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -190,3 +192,16 @@ PlayableDirector:
   m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
+--- !u!114 &6352356825172373307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab93d49cd67acc64a83d6b3d38446633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9120122603904476910}

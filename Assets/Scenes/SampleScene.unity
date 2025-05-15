@@ -851,6 +851,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.033311553
       objectReference: {fileID: 0}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: -6649461486724392201, guid: 6c2fd8ea20f15414ba39cab7e944252b, type: 2}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862368026284968369, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8200260850592708831, guid: f5dacb4bab94f8046bbd78d9b8f26730, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9024451

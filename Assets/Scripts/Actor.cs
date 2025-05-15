@@ -6,6 +6,7 @@ public class Actor : MonoBehaviour
     public ActorLogicInput logicInput;
     public ActorMovement movement;
     public ActionPlayableDirector actionPlayableDirector;
+    public AnimationSimpleBlender animationSimpleBlender;
 
     private CharacterController _characterController;
     public CharacterController characterController

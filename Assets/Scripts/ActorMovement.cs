@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(Animator))]
 public class ActorMovement : MonoBehaviour
 {
@@ -52,6 +53,23 @@ public class ActorMovement : MonoBehaviour
         var deltaRot = animator.deltaRotation;
         transform.localRotation *= deltaRot;
         actor.characterController.Move(deltaPos);
+        UpdateY();
+#if UNITY_EDITOR
+        if (isRecording)
+        {
+            // 记录动画的位移和旋转
+            previewDeltaPosition += animator.deltaPosition;
+            previewDeltaRotation *= animator.deltaRotation;
+        }
+#endif
+    }
+
+    void UpdateY()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            return;
+#endif
         if (actor.characterController.isGrounded)
         {
             velocity = Vector3.zero;
@@ -67,4 +85,37 @@ public class ActorMovement : MonoBehaviour
     {
         transform.localRotation = Quaternion.identity;
     }
+
+#if UNITY_EDITOR
+    bool isRecording = false;
+    protected Vector3 previewDeltaPosition;
+    protected Quaternion previewDeltaRotation;
+
+    public void StartRecordMovement()
+    {
+        if (isRecording)
+        {
+            ResetTransform();
+        }
+        isRecording = false;
+        if (Application.isPlaying)
+            return;
+        isRecording = true;
+        previewDeltaPosition = Vector3.zero;
+        previewDeltaRotation = Quaternion.identity;
+    }
+
+    public void ResetTransform()
+    {
+        if (!isRecording)
+            return;
+        isRecording = false;
+        if (Application.isPlaying)
+            return;
+        // Reset the animator's position and rotation
+        actor.transform.localPosition -= previewDeltaPosition;
+        animator.transform.localRotation *= Quaternion.Inverse(previewDeltaRotation);
+    }
+#endif
+
 }

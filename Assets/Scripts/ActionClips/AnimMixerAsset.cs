@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-class AnimMixerAsset : PlayableAsset
+public class AnimMixerAsset : PlayableAsset
 {
     public AnimationClip clip;
 
@@ -11,13 +11,31 @@ class AnimMixerAsset : PlayableAsset
         var playable = ScriptPlayable<AnimMixerClip>.Create(graph);
         AnimMixerClip mixerClip = playable.GetBehaviour();
         mixerClip.clip = clip;
+#if UNITY_EDITOR
+        // 编辑器里，记录起始位置
+        var actor = owner.GetComponent<Actor>();
+        if (actor)
+        {
+            actor.movement.StartRecordMovement();
+        }
+#endif
         return playable;
     }
 }
 
-class AnimMixerClip : ActionClipBase
+public class AnimMixerClip : ActionClipBase
 {
     public AnimationClip clip;
+
+#if UNITY_EDITOR
+    public override void OnPlayableDestroy(Playable playable)
+    {
+        if (actor)
+        {
+            actor.movement.ResetTransform();
+        }
+    }
+#endif
 
     public override void OnActionPause()
     {

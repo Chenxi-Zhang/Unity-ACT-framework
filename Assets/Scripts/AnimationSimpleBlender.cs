@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
+[ExecuteInEditMode]
 public class AnimationSimpleBlender : MonoBehaviour
 {
     public Animator animator;

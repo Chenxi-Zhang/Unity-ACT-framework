@@ -57,6 +57,8 @@ class ActionTimelineAssetEditor : Editor
         TimelineAsset timelineAsset = asset.TimelineAsset;
         TimelineHelper.SelectDirector(timelineAsset);
         // 打开Timeline窗口并加载此资源
-        TimelineEditor.GetOrCreateWindow().SetTimeline(timelineAsset);
+        var window = TimelineEditor.GetOrCreateWindow();
+        window.SetTimeline(timelineAsset);
+        window.Focus();
     }
 }

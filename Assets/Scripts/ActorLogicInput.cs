@@ -36,6 +36,11 @@ public class ActorLogicInput : MonoBehaviour
         }
     }
 
+    public void InputButton(InputType inputType)
+    {
+        TryAddInput(inputType);
+    }
+
     private void TryAddInput(InputType inputType)
     {
         if (inputActions.TryGetValue(inputType, out var action))
@@ -63,8 +68,10 @@ public class ActorLogicInput : MonoBehaviour
     }
 }
 
-public enum InputType {
+public enum InputType
+{
     None,
     Move,
     MoveCancel,
+    Attack,
 }

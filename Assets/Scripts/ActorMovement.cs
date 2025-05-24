@@ -52,7 +52,8 @@ public class ActorMovement : MonoBehaviour
         var deltaPos = animator.deltaPosition;
         var deltaRot = animator.deltaRotation;
         transform.localRotation *= deltaRot;
-        actor.characterController.Move(deltaPos);
+        actor.characterController.Move(new Vector3(deltaPos.x, 0, deltaPos.z));
+        transform.localPosition += new Vector3(0, deltaPos.y, 0);
         UpdateY();
 #if UNITY_EDITOR
         if (isRecording)
@@ -84,6 +85,7 @@ public class ActorMovement : MonoBehaviour
     internal void ResetRotation()
     {
         transform.localRotation = Quaternion.identity;
+        transform.localPosition = Vector3.zero;
     }
 
 #if UNITY_EDITOR
@@ -113,7 +115,7 @@ public class ActorMovement : MonoBehaviour
         if (Application.isPlaying)
             return;
         // Reset the animator's position and rotation
-        actor.transform.localPosition -= previewDeltaPosition;
+        actor.characterController.Move(-previewDeltaPosition);
         animator.transform.localRotation *= Quaternion.Inverse(previewDeltaRotation);
     }
 #endif

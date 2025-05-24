@@ -82,6 +82,10 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            controllingActor.logicInput.InputButton(InputType.Attack);
+        }
     }
 
     public void OnCrouch(InputAction.CallbackContext context)

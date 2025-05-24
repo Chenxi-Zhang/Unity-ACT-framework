@@ -83,7 +83,10 @@ GameObject:
   - component: {fileID: 4708077285437426794}
   - component: {fileID: 6815510012680823109}
   - component: {fileID: 6352356825172373307}
-  m_Layer: 0
+  - component: {fileID: 3031405196969237351}
+  - component: {fileID: 6918184121097613791}
+  - component: {fileID: 1649198320801522232}
+  m_Layer: 6
   m_Name: ActorRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +125,7 @@ MonoBehaviour:
   movement: {fileID: 6809415184723294467}
   actionPlayableDirector: {fileID: 4708077285437426794}
   animationSimpleBlender: {fileID: 6352356825172373307}
+  attackColliderManager: {fileID: 3031405196969237351}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -205,3 +209,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9120122603904476910}
+--- !u!114 &3031405196969237351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2912e4f6987ac3b41bc7d81498051184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5236835919920874985}
+  attacker: {fileID: 6918184121097613791}
+--- !u!114 &6918184121097613791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff08dddebf355aa4fa511c87cb519b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5236835919920874985}
+  attackLayer: 0
+--- !u!114 &1649198320801522232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462858482721576458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159a503b3fb39374eb0487045e77d3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5236835919920874985}

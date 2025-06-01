@@ -74,4 +74,5 @@ public enum InputType
     Move,
     MoveCancel,
     Attack,
+    Interact,
 }

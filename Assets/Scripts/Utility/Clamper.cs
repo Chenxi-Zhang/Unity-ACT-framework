@@ -34,3 +34,38 @@ public struct Clamper
         }
     }
 }
+
+public struct Vector3Clamper
+{
+    public float minX;
+    public float maxX;
+
+    public Vector3 minY;
+    public Vector3 maxY;
+
+    public Vector3Clamper(float minX, float maxX, Vector3 minY, Vector3 maxY)
+    {
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
+    }
+
+    public Vector3 Clamp(float x)
+    {
+        if (x >= maxX)
+        {
+            return maxY;
+        }
+        else if (x <= minX)
+        {
+            return minY;
+        }
+        else
+        {
+            float ratio = (x - minX) / (maxX - minX);
+            return Vector3.Lerp(minY, maxY, ratio);
+        }
+    }
+
+}

@@ -114,6 +114,8 @@ public partial class ActorAttackColliderManager : MonoBehaviour
 
     public void EnableColliders(List<AttackColliderConfig> configs)
     {
+        if (configs == null || configs.Count == 0)
+            return;
         for (int i = 0; i < configs.Count; i++)
         {
             EnableCollider(configs[i]);

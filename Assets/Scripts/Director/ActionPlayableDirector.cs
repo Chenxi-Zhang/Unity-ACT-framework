@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class ActionPlayableDirector : MonoBehaviour
+public class ActionPlayableDirector : BasePlayableDirector
 {
-    public PlayableDirector playableDirector;
     public ActionTimelineAsset Idle;
     public ActorMovement actorMovement;
 
@@ -31,7 +30,7 @@ public class ActionPlayableDirector : MonoBehaviour
         }
     }
 
-    public void PlayAction(ActionTimelineAsset action)
+    public override void PlayAction(ActionTimelineAsset action)
     {
         actorMovement.ResetRotation();
         playableDirector.Play(action.TimelineAsset);

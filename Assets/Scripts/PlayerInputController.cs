@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -56,6 +57,53 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
             return;
         }
         controllingActor.logicInput.InputMove(ConvertFromCameraLocalToWorld(rawMove), distance);
+        var interactiveChecker = controllingActor.interactiveChecker;
+        var mainObj = UpdateInteractiveObjects(interactiveChecker.interactObjs);
+        interactiveChecker.SetFocusedObject(mainObj);
+    }
+
+    List<InteractObject> validObjects = new();
+    InteractObject UpdateInteractiveObjects(List<InteractObject> interactiveObjects)
+    {
+        var cam = Camera.main;
+        validObjects.Clear();
+        if (cam == null || interactiveObjects == null || interactiveObjects.Count == 0)
+            return null;
+
+        var camTransform = cam.transform;
+        var camForward = camTransform.forward;
+        var camPos = camTransform.position;
+
+        foreach (var obj in interactiveObjects)
+        {
+            if (obj == null)
+                continue;
+            var screenPos = cam.WorldToScreenPoint(obj.transform.position);
+            // 剔除屏幕后对象
+            if (screenPos.z < 0)
+            {
+                continue;
+            }
+            validObjects.Add(obj);
+        }
+
+        float minDist = float.MaxValue;
+        InteractObject mainObj = null;
+        foreach (var obj in validObjects)
+        {
+            var objPos = obj.transform.position;
+            // 计算点到射线距离
+            var toObj = objPos - camPos;
+            var proj = Vector3.Project(toObj, camForward);
+            var closestPoint = camPos + proj;
+            float dist = Vector3.Distance(objPos, closestPoint);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                mainObj = obj;
+            }
+        }
+        return mainObj;
     }
 
     private Vector3 ConvertFromCameraLocalToWorld(Vector2 move)
@@ -94,6 +142,10 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            controllingActor.logicInput.InputButton(InputType.Interact);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)

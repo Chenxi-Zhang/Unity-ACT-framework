@@ -15,8 +15,8 @@ TagManager:
   - Atk
   - Ground
   - 
-  - 
-  - 
+  - InteractActor
+  - InteractTarget
   - 
   - 
   - 

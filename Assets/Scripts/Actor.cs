@@ -8,6 +8,7 @@ public class Actor : MonoBehaviour
     public ActionPlayableDirector actionPlayableDirector;
     public AnimationSimpleBlender animationSimpleBlender;
     public ActorAttackColliderManager attackColliderManager;
+    public ActorInteractChecker interactiveChecker;
 
     private CharacterController _characterController;
     public CharacterController characterController
@@ -22,15 +23,4 @@ public class Actor : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

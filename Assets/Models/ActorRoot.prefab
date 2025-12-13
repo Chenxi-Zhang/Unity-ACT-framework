@@ -127,7 +127,7 @@ MonoBehaviour:
   actionPlayableDirector: {fileID: 4708077285437426794}
   animationSimpleBlender: {fileID: 6352356825172373307}
   attackColliderManager: {fileID: 3031405196969237351}
-  interactiveChecker: {fileID: 642266521299746986}
+  interactChecker: {fileID: 642266521299746986}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0

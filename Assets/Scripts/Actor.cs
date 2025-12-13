@@ -8,7 +8,7 @@ public class Actor : MonoBehaviour
     public ActionPlayableDirector actionPlayableDirector;
     public AnimationSimpleBlender animationSimpleBlender;
     public ActorAttackColliderManager attackColliderManager;
-    public ActorInteractChecker interactiveChecker;
+    public ActorInteractChecker interactChecker;
 
     private CharacterController _characterController;
     public CharacterController characterController

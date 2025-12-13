@@ -57,31 +57,32 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
             return;
         }
         controllingActor.logicInput.InputMove(ConvertFromCameraLocalToWorld(rawMove), distance);
-        var interactiveChecker = controllingActor.interactiveChecker;
-        var mainObj = UpdateInteractiveObjects(interactiveChecker.interactObjs);
-        interactiveChecker.SetFocusedObject(mainObj);
+        var interactChecker = controllingActor.interactChecker;
+        var mainObj = UpdateInteractObjects(interactChecker.interactObjs);
+        interactChecker.SetFocusedObject(mainObj);
     }
 
     List<InteractObject> validObjects = new();
-    InteractObject UpdateInteractiveObjects(List<InteractObject> interactiveObjects)
+    InteractObject UpdateInteractObjects(List<InteractObject> interactObjects)
     {
         var cam = Camera.main;
         validObjects.Clear();
-        if (cam == null || interactiveObjects == null || interactiveObjects.Count == 0)
+        if (cam == null || interactObjects == null || interactObjects.Count == 0)
             return null;
 
         var camTransform = cam.transform;
         var camForward = camTransform.forward;
         var camPos = camTransform.position;
 
-        foreach (var obj in interactiveObjects)
+        foreach (var obj in interactObjects)
         {
             if (obj == null)
                 continue;
-            var screenPos = cam.WorldToScreenPoint(obj.transform.position);
+            var screenPos = obj.indicator.screenPos;
             // 剔除屏幕后对象
             if (screenPos.z < 0)
             {
+                obj.Hide();
                 continue;
             }
             validObjects.Add(obj);
@@ -97,11 +98,18 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
             var proj = Vector3.Project(toObj, camForward);
             var closestPoint = camPos + proj;
             float dist = Vector3.Distance(objPos, closestPoint);
-            if (dist < minDist)
+            if (obj.IsInteractable(controllingActor) && dist < minDist)
             {
                 minDist = dist;
                 mainObj = obj;
             }
+        }
+        foreach (var obj in validObjects)
+        {
+            if (obj == mainObj)
+                obj.SetDisplayState(DisplayState.Focus);
+            else
+                obj.SetDisplayState(DisplayState.Show);
         }
         return mainObj;
     }

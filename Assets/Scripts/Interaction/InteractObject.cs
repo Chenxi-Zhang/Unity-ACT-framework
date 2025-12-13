@@ -9,10 +9,11 @@ public class InteractObject : MonoBehaviour
     public ActionTimelineAsset targetAction;
     public ActionTimelineAsset actorAction;
 
+    public InteractChecker checker;
+    public InteractIndicator indicator;
+
     public Vector3 position;
     public float speed = 0;
-
-    protected Vector3 screenPos;
 
     public void ApplyInteract(Actor actor)
     {
@@ -21,6 +22,21 @@ public class InteractObject : MonoBehaviour
         actor.movement.ForceSetTurn((target.transform.position - pos).normalized);
         targetDirector.PlayAction(targetAction);
         actor.actionPlayableDirector.PlayAction(actorAction);
+    }
+
+    public void Hide()
+    {
+        SetDisplayState(DisplayState.Hide);
+    }
+
+    public void SetDisplayState(DisplayState state)
+    {
+        indicator.UpdateDisplayState(state);
+    }
+
+    public bool IsInteractable(Actor actor)
+    {
+        return checker.IsInteractable(actor);
     }
 
     void OnDrawGizmosSelected()

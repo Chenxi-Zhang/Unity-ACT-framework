@@ -54,6 +54,7 @@ public class ActorInteractChecker : MonoBehaviour
     void RemoveInteracObject(InteractObject interactiveObject)
     {
         interactObjs.Remove(interactiveObject);
+        interactiveObject.Hide();
         interactObjs.RemoveAll(i => i == null);
     }
 
@@ -67,10 +68,6 @@ public class ActorInteractChecker : MonoBehaviour
     {
         if (mainObj != focusedObj)
         {
-            if (focusedObj != null)
-                Debug.Log($"Lost focused object: {focusedObj.name}");
-            if (mainObj != null)
-                Debug.Log($"Set focused object: {mainObj.name}");
             focusedObj = mainObj;
         }
     }

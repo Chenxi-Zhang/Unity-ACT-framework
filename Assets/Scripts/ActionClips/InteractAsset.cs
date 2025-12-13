@@ -27,7 +27,7 @@ class InteractClip : ActionClipBase
 
     private void InputCallback()
     {
-        var focusedObj = actor.interactiveChecker.focusedObj;
+        var focusedObj = actor.interactChecker.focusedObj;
         if (focusedObj != null)
         {
             focusedObj.ApplyInteract(actor);

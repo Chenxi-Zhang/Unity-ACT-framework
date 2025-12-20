@@ -9,6 +9,7 @@ public class Actor : MonoBehaviour
     public AnimationSimpleBlender animationSimpleBlender;
     public ActorAttackColliderManager attackColliderManager;
     public ActorInteractChecker interactChecker;
+    public ActorCameraStatus actorCameraStatus;
 
     private CharacterController _characterController;
     public CharacterController characterController

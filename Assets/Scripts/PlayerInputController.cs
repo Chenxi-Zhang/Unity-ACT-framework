@@ -7,9 +7,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerActions
 {
-    public CinemachineCamera vcam;
+    public CameraManager cameraManager;
 
     private Actor controllingActor;
+    public Actor ControllingActor => controllingActor;
 
     private PlayerInput playerInput;
     private InputSystem_Actions actions;
@@ -39,15 +40,10 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
         actions.Dispose();
     }
 
-    void Start()
-    {
-        SetControllingActor(FindFirstObjectByType<Actor>());
-    }
-
     public void SetControllingActor(Actor actor)
     {
         controllingActor = actor;
-        vcam.Follow = actor.transform;
+        cameraManager.SetFollow(actor);
     }
 
     void Update()
@@ -174,5 +170,32 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+    }
+
+    public void OnLock(InputAction.CallbackContext context)
+    {
+        if (controllingActor == null)
+            return;
+        if (context.started)
+        {
+            DoClickLock();
+        }
+    }
+
+    private void DoClickLock()
+    {
+        if (controllingActor.actorCameraStatus.IsLocking)
+        {
+            controllingActor.actorCameraStatus.UnlockTarget();
+            return;
+        }
+        if (controllingActor.actorCameraStatus.TrySearchAndLock())
+        {
+            cameraManager.LockTo(controllingActor.actorCameraStatus.LockingTarget);
+        }
+        else
+        {
+            cameraManager.Recenter();
+        }
     }
 }

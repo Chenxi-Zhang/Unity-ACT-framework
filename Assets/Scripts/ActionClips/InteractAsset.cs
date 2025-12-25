@@ -17,11 +17,23 @@ class InteractClip : ActionClipBase
 {
     public override void OnActionPause()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
         actor.logicInput.UnregisterInputAction(InputType.Interact);
     }
 
     public override void OnActionPlay()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
         actor.logicInput.RegisterInputAction(InputType.Interact, InputCallback);
     }
 

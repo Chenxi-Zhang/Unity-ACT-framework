@@ -15,6 +15,9 @@ public class ActorLogicInput : MonoBehaviour
     public float turnBackAngle = 150f;
     public float stopTurnAngle = 5f;
 
+    public BoolStatus disableTurningToLock = new();
+
+    private Vector3 inputMoveDirection = Vector3.zero;
 
     public void RegisterInputAction(InputType inputType, Action action)
     {
@@ -32,7 +35,7 @@ public class ActorLogicInput : MonoBehaviour
 
     public void InputMove(Vector3 direction, float distance)
     {
-        actor.movement.UpdateTurn(direction);
+        inputMoveDirection = direction;
         if (distance > 0.1f)
         {
             TryAddInput(InputType.Move);
@@ -62,6 +65,11 @@ public class ActorLogicInput : MonoBehaviour
         {
             TryTurnToLockingTarget();
         }
+        else
+        {
+            actor.movement.UpdateTurn(inputMoveDirection);
+        }
+        inputMoveDirection = Vector3.zero;
     }
 
     private void TryTurnToLockingTarget()
@@ -69,7 +77,14 @@ public class ActorLogicInput : MonoBehaviour
         var facingTo = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
         facingTo.y = 0;
         facingTo.Normalize();
-        actor.movement.UpdateTurn(facingTo);
+        if (disableTurningToLock)
+        {
+            actor.movement.UpdateTurn(inputMoveDirection);
+        }
+        else
+        {
+            actor.movement.UpdateTurn(facingTo);
+        }
         float angle = Vector3.SignedAngle(actor.transform.forward, facingTo, Vector3.up);
         if (angle > turnBackAngle || angle < -turnBackAngle)
         {

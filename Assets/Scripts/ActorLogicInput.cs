@@ -59,31 +59,31 @@ public class ActorLogicInput : MonoBehaviour
         }
     }
 
-    void Update()
+    public void DoUpdate(float deltaTime)
     {
         if (IsLocking)
         {
-            TryTurnToLockingTarget();
+            TryTurnToLockingTarget(deltaTime);
         }
         else
         {
-            actor.movement.UpdateTurn(inputMoveDirection);
+            actor.movement.UpdateTurn(inputMoveDirection, deltaTime);
         }
         inputMoveDirection = Vector3.zero;
     }
 
-    private void TryTurnToLockingTarget()
+    private void TryTurnToLockingTarget(float deltaTime)
     {
         var facingTo = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
         facingTo.y = 0;
         facingTo.Normalize();
         if (disableTurningToLock)
         {
-            actor.movement.UpdateTurn(inputMoveDirection);
+            actor.movement.UpdateTurn(inputMoveDirection, deltaTime);
         }
         else
         {
-            actor.movement.UpdateTurn(facingTo);
+            actor.movement.UpdateTurn(facingTo, deltaTime);
         }
         float angle = Vector3.SignedAngle(actor.transform.forward, facingTo, Vector3.up);
         if (angle > turnBackAngle || angle < -turnBackAngle)

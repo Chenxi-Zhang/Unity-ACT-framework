@@ -24,4 +24,13 @@ public class Actor : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        var deltaTime = Time.deltaTime;
+        logicInput.DoUpdate(deltaTime);
+        actionPlayableDirector.DoUpdate(deltaTime);
+        movement.DoUpdate(deltaTime);
+        animationSimpleBlender.DoUpdate(deltaTime);
+    }
+
 }

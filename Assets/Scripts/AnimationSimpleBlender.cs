@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -180,14 +181,14 @@ public class AnimationSimpleBlender : MonoBehaviour
         }
     }
 
-    void Update()
+    public void DoUpdate(float deltaTime)
     {
         foreach (var state in assetDict.Values)
         {
             // Update blend-out states
             if (state.IsOut)
             {
-                state.Update(Time.deltaTime);
+                state.Update(deltaTime);
             }
         }
         UpdateMixerWeight();

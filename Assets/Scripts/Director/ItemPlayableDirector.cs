@@ -21,7 +21,7 @@ public class ItemPlayableDirector : BasePlayableDirector
         playableDirector.stopped += OnDirectorStopped;
     }
 
-    public override void PlayAction(ActionTimelineAsset action)
+    public override void PlayAction(ActionTimelineAsset action, double initialTime = 0)
     {
         playingAction = action;
         playableDirector.Play(action.TimelineAsset, DirectorWrapMode.None);

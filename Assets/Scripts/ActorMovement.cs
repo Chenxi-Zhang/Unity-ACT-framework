@@ -60,7 +60,7 @@ public class ActorMovement : MonoBehaviour
     public BoolStatus TurnDisabled = new();
 
     // 由输入调用的旋转
-    public void UpdateTurn(Vector3 direction)
+    public void UpdateTurn(Vector3 direction, float deltaTime)
     {
         if (TurnDisabled)
             return;
@@ -72,7 +72,7 @@ public class ActorMovement : MonoBehaviour
             rotation = Quaternion.RotateTowards(
                 rotation,
                 targetRotation,
-                GetTurnSpeed() * Time.deltaTime
+                GetTurnSpeed() * deltaTime
             );
         }
     }
@@ -82,7 +82,7 @@ public class ActorMovement : MonoBehaviour
         return 360f * 2; //每秒旋转角度
     }
 
-    void Update()
+    public void DoUpdate(float deltaTime)
     {
         actorRotation = rotation;
         UpdateForcingMove();

@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  ignoreRootMotion: 0
   _timelineAsset: {fileID: 1447531249721879517}
 --- !u!114 &1447531249721879517
 MonoBehaviour:

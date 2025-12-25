@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 
 public class ActionTransitionAsset : PlayableAsset
 {
-    public InputType inputType;
+    public EnumByName<InputType> inputType;
     public ActionTimelineAsset action;
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
@@ -23,6 +23,12 @@ public class ActionTransitionClip : ActionClipBase
 
     public override void OnActionPlay()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
         actor.logicInput.RegisterInputAction(inputType, OnInputTriggered);
     }
 
@@ -33,6 +39,12 @@ public class ActionTransitionClip : ActionClipBase
 
     public override void OnActionPause()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
         actor.logicInput.UnregisterInputAction(inputType);
     }
 }

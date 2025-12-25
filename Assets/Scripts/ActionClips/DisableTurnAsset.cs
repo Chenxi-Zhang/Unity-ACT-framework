@@ -8,12 +8,12 @@ class DisableTurnClip : ActionClipBase
 
     public override void OnActionPlay()
     {
-        actor.movement.AddDisableTurn();
+        actor.movement.TurnDisabled.AddStatus();
     }
 
     public override void OnActionPause()
     {
-        actor.movement.RemoveDisableTurn();
+        actor.movement.TurnDisabled.RemoveStatus();
     }
 }
 

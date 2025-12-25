@@ -16,11 +16,11 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: -2807148720229403452}
   - {fileID: -2163618258798007322}
-  m_FixedDuration: 0
+  m_FixedDuration: 1.3666666666666667
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
-  m_DurationMode: 0
+  m_DurationMode: 1
   m_MarkerTrack: {fileID: 0}
 --- !u!114 &-2807148720229403452
 MonoBehaviour:
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: MoveCancel->Idle
+    m_DisplayName: MoveCancel->Great Sword Idle
   m_Markers:
     m_Objects: []
 --- !u!114 &-2163618258798007322
@@ -218,8 +218,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043c8878114de5a4b9bd79fe70e25746, type: 3}
   m_Name: ActionTransitionAsset
   m_EditorClassIdentifier: 
-  inputType: 2
-  action: {fileID: 11400000, guid: e0f95b3b691a2da4fa6a63b46bc2a176, type: 2}
+  inputType:
+    value: MoveCancel
+  action: {fileID: 11400000, guid: f3a846af7d98ed64394310127e40880a, type: 2}
+--- !u!114 &-19933156399298277
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960b8da4bb4f15f488a8bcd603f073e3, type: 3}
+  m_Name: DisableTurningToLockAsset
+  m_EditorClassIdentifier: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

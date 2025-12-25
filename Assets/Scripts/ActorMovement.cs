@@ -51,8 +51,7 @@ public class ActorMovement : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     Quaternion rotation = Quaternion.identity;
 
-    int _disableTurn = 0;
-    bool TurnDisabled => _disableTurn > 0;
+    public BoolStatus TurnDisabled = new();
 
     // 由输入调用的旋转
     public void UpdateTurn(Vector3 direction)
@@ -87,7 +86,20 @@ public class ActorMovement : MonoBehaviour
     {
         var deltaPos = animator.deltaPosition;
         var deltaRot = animator.deltaRotation;
-        modelRotation *= deltaRot;
+        var rootDeltaRot = Quaternion.identity;
+        var modelDeltaRot = Quaternion.identity;
+        if (TurnDisabled)
+        {
+            // 动画的旋转直接应用到root节点上，并且只应用y轴旋转
+            Vector3 euler = deltaRot.eulerAngles;
+            rootDeltaRot = Quaternion.Euler(0, euler.y, 0);
+        }
+        else
+        {
+            modelDeltaRot = deltaRot;
+        }
+        rotation *= rootDeltaRot;
+        modelRotation *= modelDeltaRot;
         controller.Move(new Vector3(deltaPos.x, 0, deltaPos.z));
         modelPosY += deltaPos.y;
         UpdateY();
@@ -95,8 +107,9 @@ public class ActorMovement : MonoBehaviour
         if (isRecording)
         {
             // 记录动画的位移和旋转
-            previewDeltaPosition += animator.deltaPosition;
-            previewDeltaRotation *= animator.deltaRotation;
+            previewDeltaPosition += deltaPos;
+            previewRootDeltaRotation *= rootDeltaRot;
+            previewDeltaRotation *= modelDeltaRot;
         }
 #endif
     }
@@ -127,6 +140,7 @@ public class ActorMovement : MonoBehaviour
 #if UNITY_EDITOR
     bool isRecording = false;
     protected Vector3 previewDeltaPosition;
+    protected Quaternion previewRootDeltaRotation;
     protected Quaternion previewDeltaRotation;
 
     public void StartRecordMovement()
@@ -140,6 +154,7 @@ public class ActorMovement : MonoBehaviour
             return;
         isRecording = true;
         previewDeltaPosition = Vector3.zero;
+        previewRootDeltaRotation = Quaternion.identity;
         previewDeltaRotation = Quaternion.identity;
     }
 
@@ -152,6 +167,7 @@ public class ActorMovement : MonoBehaviour
             return;
         // Reset the animator's position and rotation
         controller.Move(-previewDeltaPosition);
+        actorRotation *= Quaternion.Inverse(previewRootDeltaRotation);
         modelRotation *= Quaternion.Inverse(previewDeltaRotation);
     }
 #endif
@@ -197,16 +213,6 @@ public class ActorMovement : MonoBehaviour
             // Root rotation consider later.
 #endif
         }
-    }
-
-    public void AddDisableTurn()
-    {
-        _disableTurn++;
-    }
-
-    public void RemoveDisableTurn()
-    {
-        _disableTurn--;
     }
 
 }

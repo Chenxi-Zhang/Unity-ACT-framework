@@ -5,9 +5,16 @@ using UnityEngine;
 public class ActorLogicInput : MonoBehaviour
 {
     public Actor actor;
+    private bool IsLocking => actor.actorCameraStatus.IsLocking;
+    private Actor LockingTarget => actor.actorCameraStatus.LockingTarget;
 
-    Dictionary<InputType, Action> inputActions = new ();
-    Dictionary<InputType, Action> inputThisFrame = new ();
+    Dictionary<InputType, Action> inputActions = new();
+    Dictionary<InputType, Action> inputThisFrame = new();
+
+    public float maxBodyTwistAngle = 45f;
+    public float turnBackAngle = 150f;
+    public float stopTurnAngle = 5f;
+
 
     public void RegisterInputAction(InputType inputType, Action action)
     {
@@ -49,6 +56,39 @@ public class ActorLogicInput : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (IsLocking)
+        {
+            TryTurnToLockingTarget();
+        }
+    }
+
+    private void TryTurnToLockingTarget()
+    {
+        var facingTo = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
+        facingTo.y = 0;
+        facingTo.Normalize();
+        actor.movement.UpdateTurn(facingTo);
+        float angle = Vector3.SignedAngle(actor.transform.forward, facingTo, Vector3.up);
+        if (angle > turnBackAngle || angle < -turnBackAngle)
+        {
+            InputButton(InputType.IdleTurnBack);
+        }
+        else if (angle > maxBodyTwistAngle)
+        {
+            InputButton(InputType.IdleTurnRight);
+        }
+        else if (angle < -maxBodyTwistAngle)
+        {
+            InputButton(InputType.IdleTurnLeft);
+        }
+        else if (Mathf.Abs(angle) < stopTurnAngle)
+        {
+            InputButton(InputType.IdleTurnStop);
+        }
+    }
+
     void LateUpdate()
     {
         if (inputThisFrame.Count == 0)
@@ -66,13 +106,4 @@ public class ActorLogicInput : MonoBehaviour
         inputThisFrame.Clear();
         execAction?.Invoke();
     }
-}
-
-public enum InputType
-{
-    None,
-    Move,
-    MoveCancel,
-    Attack,
-    Interact,
 }

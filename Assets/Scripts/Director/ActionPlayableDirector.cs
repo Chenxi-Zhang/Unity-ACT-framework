@@ -19,7 +19,7 @@ public class ActionPlayableDirector : BasePlayableDirector
     {
         if (playingAction.loop)
         {
-            PlayAction(playingAction);
+            // PlayAction(playingAction);
         }
         else
         {
@@ -33,7 +33,7 @@ public class ActionPlayableDirector : BasePlayableDirector
     public override void PlayAction(ActionTimelineAsset action)
     {
         actorMovement.ResetRotation();
-        playableDirector.Play(action.TimelineAsset);
+        playableDirector.Play(action.TimelineAsset, action.loop ? DirectorWrapMode.Loop : DirectorWrapMode.None);
         playingAction = action;
     }
 

@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+  maxHorizontalAngle: 70
+  maxVerticalAngle: 50
 --- !u!95 &9120122603904476910
 Animator:
   serializedVersion: 7
@@ -200,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+  maxBodyTwistAngle: 45
 --- !u!114 &4708077285437426794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9120122603904476910}
+  director: {fileID: 6815510012680823109}
 --- !u!114 &3031405196969237351
 MonoBehaviour:
   m_ObjectHideFlags: 0

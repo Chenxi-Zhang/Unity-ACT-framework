@@ -129,6 +129,7 @@ public class AnimationSimpleBlender : MonoBehaviour
         if (!assetDict.TryGetValue(clip, out var state))
         {
             var playable = AnimationClipPlayable.Create(Graph, clip);
+            playable.SetApplyPlayableIK(true);
             state = new BlendState(playable);
             assetDict.Add(clip, state);
         }

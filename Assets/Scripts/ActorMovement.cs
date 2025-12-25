@@ -6,6 +6,10 @@ using UnityEngine;
 public class ActorMovement : MonoBehaviour
 {
     public Actor actor;
+    // 定义视野范围
+    public float maxHorizontalAngle = 70f; // 水平视野角度（左右各70度）
+    public float maxVerticalAngle = 50f;   // 垂直视野角度（上下各50度）
+
     private Animator _animator;
     public Animator animator
     {
@@ -20,6 +24,8 @@ public class ActorMovement : MonoBehaviour
     }
 
     public CharacterController controller => actor.characterController;
+    public bool IsLocking => actor.actorCameraStatus.IsLocking;
+    public Actor LockingTarget => actor.actorCameraStatus.LockingTarget;
 
     public GameObject actorRoot => actor.gameObject;
     public GameObject modelRoot => animator.gameObject;
@@ -112,6 +118,39 @@ public class ActorMovement : MonoBehaviour
             previewDeltaRotation *= modelDeltaRot;
         }
 #endif
+    }
+
+    private Vector3 lookingPosition = Vector3.zero;
+    private FloatEaseTool globalLookAtWeight = new(0, 10f);
+
+    void OnAnimatorIK(int layerIndex)
+    {
+        float lookWeightTarget = 0.0f;
+        if (IsLocking)
+        {
+            lookingPosition = LockingTarget.actorCameraStatus.cameraTarget.position;
+            Vector3 targetDirection = lookingPosition - actorPosition;
+            targetDirection.Normalize();
+            // 计算水平角度（左右方向）
+            float horizontalAngle = Vector3.Angle(
+                new Vector3(actorRoot.transform.forward.x, 0, actorRoot.transform.forward.z).normalized,
+                new Vector3(targetDirection.x, 0, targetDirection.z).normalized);
+            // 计算垂直角度（上下方向）
+            float verticalAngle = Vector3.Angle(
+                new Vector3(0, actorRoot.transform.forward.y, 1).normalized,
+                new Vector3(0, targetDirection.y, 1).normalized);
+            // 检查目标是否在前方（点积为正值）
+            bool isInFront = Vector3.Dot(actorRoot.transform.forward, targetDirection) > 0;
+            // 检查是否在视野范围内
+            if (isInFront && horizontalAngle <= maxHorizontalAngle && verticalAngle <= maxVerticalAngle)
+            {
+                // 设置 Look At 权重和位置
+                lookWeightTarget = 1.0f;
+            }
+        }
+        animator.SetLookAtPosition(lookingPosition);
+        var globalModifier = globalLookAtWeight.GetEaseValue(lookWeightTarget, Time.deltaTime);
+        animator.SetLookAtWeight(globalModifier, 0.3f, 0.6f, 1.0f, 0.5f);
     }
 
     void UpdateY()

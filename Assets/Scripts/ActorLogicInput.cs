@@ -5,6 +5,7 @@ using UnityEngine;
 public class ActorLogicInput : MonoBehaviour
 {
     public Actor actor;
+    public StrafeMoveAnimation strafeMoveAnimation;
     private bool IsLocking => actor.actorCameraStatus.IsLocking;
     private Actor LockingTarget => actor.actorCameraStatus.LockingTarget;
 
@@ -16,6 +17,8 @@ public class ActorLogicInput : MonoBehaviour
     public float stopTurnAngle = 5f;
 
     public BoolStatus disableTurningToLock = new();
+    public BoolStatus canStrafe = new();
+    private bool IsStrafe => canStrafe && IsLocking;
 
     private Vector3 inputMoveDirection = Vector3.zero;
 
@@ -33,17 +36,87 @@ public class ActorLogicInput : MonoBehaviour
         inputActions.Remove(inputType);
     }
 
-    public void InputMove(Vector3 direction, float distance)
+    public void InputMove(Vector2 rawInput, float distance)
     {
-        inputMoveDirection = direction;
-        if (distance > 0.1f)
+        if (IsStrafe)
         {
+            DoStrafeMove(rawInput, distance);
+        }
+        else
+        {
+            DoMove(rawInput, distance);
+        }
+    }
+
+    private float startMoveThreshold = 0.1f;
+
+    private void DoStrafeMove(Vector2 rawInput, float distance)
+    {
+        if (distance > startMoveThreshold)
+        {
+            var action = strafeMoveAnimation.GetDirAnim(rawInput, out var actorDir);
+            var faceWorldDir = ConvertLocalToWorldDir(new Vector3(actorDir.x, 0, actorDir.y));
+            inputMoveDirection = faceWorldDir;
+            if (action != actor.actionPlayableDirector.PlayingAction)
+            {
+                actor.actionPlayableDirector.PlayAction(action);
+            }
+        }
+        else
+        {
+            inputMoveDirection = Vector3.zero;
+            TryAddInput(InputType.MoveCancel);
+        }
+    }
+
+    private void DoMove(Vector2 rawInput, float distance)
+    {
+        if (distance > startMoveThreshold)
+        {
+            inputMoveDirection = ConvertFromCameraLocalToWorld(rawInput);
             TryAddInput(InputType.Move);
         }
         else
         {
+            inputMoveDirection = Vector3.zero;
             TryAddInput(InputType.MoveCancel);
         }
+    }
+
+    private Vector3 ConvertFromCameraLocalToWorld(Vector2 move)
+    {
+        var cam = Camera.main;
+        var movement = move.magnitude;
+        if (cam != null && movement > 0.1f)
+        {
+            // Convert the input vector to world space using the camera's transform
+            var direction = cam.transform.TransformDirection(new Vector3(move.x, 0, move.y));
+            // Flatten the worldMove vector to ignore vertical movement
+            direction.y = 0;
+            direction.Normalize();
+            return direction;
+        }
+        return Vector3.zero;
+    }
+
+    public Vector3 ConvertLocalToWorldDir(Vector3 localDir)
+    {
+        Vector3 forward;
+        if (IsLocking)
+        {
+            // 锁定的情况下使用锁定目标方向作为前进方向
+            forward = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
+            forward.y = 0;
+            forward.Normalize();
+        }
+        else
+        {
+            forward = actor.transform.forward;
+        }
+        // 计算右方向
+        var right = Vector3.Cross(Vector3.up, forward);
+        // 将本地方向转换为世界方向
+        return forward * localDir.z + right * localDir.x;
     }
 
     public void InputButton(InputType inputType)
@@ -77,7 +150,7 @@ public class ActorLogicInput : MonoBehaviour
         var facingTo = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
         facingTo.y = 0;
         facingTo.Normalize();
-        if (disableTurningToLock)
+        if (IsStrafe || disableTurningToLock)
         {
             actor.movement.UpdateTurn(inputMoveDirection, deltaTime);
         }

@@ -7,6 +7,7 @@ public class ActionPlayableDirector : BasePlayableDirector
     public ActorMovement actorMovement;
 
     private ActionTimelineAsset playingAction;
+    public ActionTimelineAsset PlayingAction => playingAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

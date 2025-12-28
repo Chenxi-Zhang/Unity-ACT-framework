@@ -52,5 +52,11 @@ public class AnimMixerClip : ActionClipBase
         if (actor == null)
             return;
         actor.animationSimpleBlender.SetTime(clip, (float)playable.GetTime());
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            actor.animationSimpleBlender.DoUpdate(Time.deltaTime);
+        }
+#endif
     }
 }

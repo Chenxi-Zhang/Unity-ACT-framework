@@ -52,7 +52,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
         {
             return;
         }
-        controllingActor.logicInput.InputMove(ConvertFromCameraLocalToWorld(rawMove), distance);
+        controllingActor.logicInput.InputMove(rawMove, distance);
         var interactChecker = controllingActor.interactChecker;
         var mainObj = UpdateInteractObjects(interactChecker.interactObjs);
         interactChecker.SetFocusedObject(mainObj);
@@ -108,22 +108,6 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
                 obj.SetDisplayState(DisplayState.Show);
         }
         return mainObj;
-    }
-
-    private Vector3 ConvertFromCameraLocalToWorld(Vector2 move)
-    {
-        var cam = Camera.main;
-        var movement = move.magnitude;
-        if (cam != null && movement > 0.1f)
-        {
-            // Convert the input vector to world space using the camera's transform
-            var direction = cam.transform.TransformDirection(new Vector3(rawMove.x, 0, rawMove.y));
-            // Flatten the worldMove vector to ignore vertical movement
-            direction.y = 0;
-            direction.Normalize();
-            return direction;
-        }
-        return Vector3.zero;
     }
 
     public void OnMove(InputAction.CallbackContext context)

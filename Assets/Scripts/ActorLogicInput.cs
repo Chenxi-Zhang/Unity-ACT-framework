@@ -50,6 +50,18 @@ public class ActorLogicInput : MonoBehaviour
 
     private float startMoveThreshold = 0.1f;
 
+    private void DoMove(Vector2 rawInput, float distance)
+    {
+        if (distance > startMoveThreshold)
+        {
+            DoInputMoveWorldDir(ConvertFromCameraLocalToWorld(rawInput));
+        }
+        else
+        {
+            DoInputMoveCancel();
+        }
+    }
+
     private void DoStrafeMove(Vector2 rawInput, float distance)
     {
         if (distance > startMoveThreshold)
@@ -64,22 +76,7 @@ public class ActorLogicInput : MonoBehaviour
         }
         else
         {
-            inputMoveDirection = Vector3.zero;
-            TryAddInput(InputType.MoveCancel);
-        }
-    }
-
-    private void DoMove(Vector2 rawInput, float distance)
-    {
-        if (distance > startMoveThreshold)
-        {
-            inputMoveDirection = ConvertFromCameraLocalToWorld(rawInput);
-            TryAddInput(InputType.Move);
-        }
-        else
-        {
-            inputMoveDirection = Vector3.zero;
-            TryAddInput(InputType.MoveCancel);
+            DoInputMoveCancel();
         }
     }
 
@@ -117,6 +114,18 @@ public class ActorLogicInput : MonoBehaviour
         var right = Vector3.Cross(Vector3.up, forward);
         // 将本地方向转换为世界方向
         return forward * localDir.z + right * localDir.x;
+    }
+
+    public void DoInputMoveWorldDir(Vector3 worldDir)
+    {
+        inputMoveDirection = worldDir;
+        TryAddInput(InputType.Move);
+    }
+
+    public void DoInputMoveCancel()
+    {
+        inputMoveDirection = Vector3.zero;
+        TryAddInput(InputType.MoveCancel);
     }
 
     public void InputButton(InputType inputType)

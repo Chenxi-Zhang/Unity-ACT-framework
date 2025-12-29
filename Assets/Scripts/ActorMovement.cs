@@ -24,8 +24,8 @@ public class ActorMovement : MonoBehaviour
     }
 
     public CharacterController controller => actor.characterController;
-    public bool IsLocking => actor.actorCameraStatus.IsLocking;
-    public Actor LockingTarget => actor.actorCameraStatus.LockingTarget;
+    public bool IsLocking => actor.cameraStatus.IsLocking;
+    public Actor LockingTarget => actor.cameraStatus.LockingTarget;
 
     public GameObject actorRoot => actor.gameObject;
     public GameObject modelRoot => animator.gameObject;
@@ -128,7 +128,7 @@ public class ActorMovement : MonoBehaviour
         float lookWeightTarget = 0.0f;
         if (IsLocking)
         {
-            lookingPosition = LockingTarget.actorCameraStatus.cameraTarget.position;
+            lookingPosition = LockingTarget.cameraStatus.cameraTarget.position;
             Vector3 targetDirection = lookingPosition - actorPosition;
             targetDirection.Normalize();
             // 计算水平角度（左右方向）

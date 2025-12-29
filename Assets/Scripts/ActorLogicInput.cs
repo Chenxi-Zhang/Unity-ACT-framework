@@ -6,8 +6,8 @@ public class ActorLogicInput : MonoBehaviour
 {
     public Actor actor;
     public StrafeMoveAnimation strafeMoveAnimation;
-    private bool IsLocking => actor.actorCameraStatus.IsLocking;
-    private Actor LockingTarget => actor.actorCameraStatus.LockingTarget;
+    private bool IsLocking => actor.cameraStatus.IsLocking;
+    private Actor LockingTarget => actor.cameraStatus.LockingTarget;
 
     Dictionary<InputType, Action> inputActions = new();
     Dictionary<InputType, Action> inputThisFrame = new();
@@ -105,7 +105,7 @@ public class ActorLogicInput : MonoBehaviour
         if (IsLocking)
         {
             // 锁定的情况下使用锁定目标方向作为前进方向
-            forward = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
+            forward = LockingTarget.cameraStatus.cameraTarget.position - actor.transform.position;
             forward.y = 0;
             forward.Normalize();
         }
@@ -147,7 +147,7 @@ public class ActorLogicInput : MonoBehaviour
 
     private void TryTurnToLockingTarget(float deltaTime)
     {
-        var facingTo = LockingTarget.actorCameraStatus.cameraTarget.position - actor.transform.position;
+        var facingTo = LockingTarget.cameraStatus.cameraTarget.position - actor.transform.position;
         facingTo.y = 0;
         facingTo.Normalize();
         if (IsStrafe || disableTurningToLock)

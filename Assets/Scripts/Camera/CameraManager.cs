@@ -30,7 +30,7 @@ public class CameraManager : CinemachineCameraManagerBase
         {
             if (ControllingActor == null)
                 return false;
-            return ControllingActor.actorCameraStatus.IsLocking;
+            return ControllingActor.cameraStatus.IsLocking;
         }
     }
 
@@ -53,13 +53,13 @@ public class CameraManager : CinemachineCameraManagerBase
 
     public void SetFollow(Actor actor)
     {
-        followCamera.Follow = actor.actorCameraStatus.cameraTarget;
-        lockCamera.Follow = actor.actorCameraStatus.cameraTarget;
+        followCamera.Follow = actor.cameraStatus.cameraTarget;
+        lockCamera.Follow = actor.cameraStatus.cameraTarget;
     }
 
     public void LockTo(Actor actor)
     {
-        lockCameraController.SetLookingTarget(actor.actorCameraStatus.cameraTarget);
+        lockCameraController.SetLookingTarget(actor.cameraStatus.cameraTarget);
     }
 
     public void Recenter()

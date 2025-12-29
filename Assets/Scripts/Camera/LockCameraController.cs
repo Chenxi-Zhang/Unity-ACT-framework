@@ -68,9 +68,9 @@ public class LockCameraController : BaseCameraController, IInputAxisOwner
         var actor = manager.ControllingActor;
         if (actor == null)
             return;
-        if (actor.actorCameraStatus.TryChangeLockTarget(input))
+        if (actor.cameraStatus.TryChangeLockTarget(input))
         {
-            SetLookingTarget(actor.actorCameraStatus.LockingTarget.actorCameraStatus.cameraTarget);
+            SetLookingTarget(actor.cameraStatus.LockingTarget.cameraStatus.cameraTarget);
         }
     }
 }

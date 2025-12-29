@@ -168,14 +168,14 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     private void DoClickLock()
     {
-        if (controllingActor.actorCameraStatus.IsLocking)
+        if (controllingActor.cameraStatus.IsLocking)
         {
-            controllingActor.actorCameraStatus.UnlockTarget();
+            controllingActor.cameraStatus.UnlockTarget();
             return;
         }
-        if (controllingActor.actorCameraStatus.TrySearchAndLock())
+        if (controllingActor.cameraStatus.TrySearchAndLock())
         {
-            cameraManager.LockTo(controllingActor.actorCameraStatus.LockingTarget);
+            cameraManager.LockTo(controllingActor.cameraStatus.LockingTarget);
         }
         else
         {

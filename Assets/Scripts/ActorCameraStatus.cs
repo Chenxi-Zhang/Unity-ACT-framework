@@ -19,18 +19,14 @@ public class ActorCameraStatus : MonoBehaviour
     // 存储候选目标
     private List<Actor> targetCandidates = new();
 
-    void CollectTargetCandidates()
+    public void CollectTargetInView(Vector3 searchOrigin, Vector3 forward, float searchRadius, float fieldOfViewAngle, LayerMask layerMask)
     {
-        // 确保有搜索原点
-        Transform searchOrigin = Camera.main.transform;
-        // 创建搜索方向 - 使用相机或角色的前方
-        Vector3 searchDirection = searchOrigin.forward;
         // 查找范围内的所有碰撞体
         int cnt = Physics.OverlapSphereNonAlloc(
-            searchOrigin.position,
-            maxLockDistance,
+            searchOrigin,
+            searchRadius,
             PhysicsHelper.colliders,
-            targetableLayers
+            layerMask
         );
         targetCandidates.Clear();
         // 筛选出符合条件的目标
@@ -46,17 +42,48 @@ public class ActorCameraStatus : MonoBehaviour
             if (actor == this.actor)
                 continue; // 忽略自己
             // 计算目标方向
-            Vector3 directionToTarget = (potentialTarget.transform.position - searchOrigin.position).normalized;
+            Vector3 directionToTarget = (potentialTarget.transform.position - searchOrigin).normalized;
             // 检查目标是否在视野范围内
-            float angle = Vector3.Angle(searchDirection, directionToTarget);
-            if (angle > lockFieldOfView * 0.5f)
+            float angle = Vector3.Angle(forward, directionToTarget);
+            if (angle > fieldOfViewAngle * 0.5f)
                 continue;
             targetCandidates.Add(actor);
         }
     }
 
+    public Actor FindClosestTarget()
+    {
+        Actor bestTarget = null;
+        float bestSqrDist = float.MaxValue;
+        foreach (var target in targetCandidates)
+        {
+            var sqrDist = Vector3.Distance(actor.transform.position, target.transform.position);
+            if (sqrDist < bestSqrDist)
+            {
+                bestTarget = target;
+                bestSqrDist = sqrDist;
+            }
+        }
+        return bestTarget;
+    }
+
+    void CollectTargetCandidates()
+    {
+        // 确保有搜索原点
+        Transform searchOrigin = Camera.main.transform;
+        // 创建搜索方向 - 使用相机或角色的前方
+        Vector3 searchDirection = searchOrigin.forward;
+        CollectTargetInView(
+            searchOrigin.position,
+            searchDirection,
+            maxLockDistance,
+            lockFieldOfView,
+            targetableLayers
+        );
+    }
+
     // 选择最近的目标
-    Actor FindClosestTarget()
+    Actor FindClosestTargetOnScreen()
     {
         Actor bestTarget = null;
         float bestSqrDist = float.MaxValue;
@@ -116,7 +143,7 @@ public class ActorCameraStatus : MonoBehaviour
     public bool TrySearchAndLock()
     {
         CollectTargetCandidates();
-        var target = FindClosestTarget();
+        var target = FindClosestTargetOnScreen();
         if (target != null)
         {
             LockingTarget = target;
@@ -137,6 +164,12 @@ public class ActorCameraStatus : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    // 由AI调用
+    public void SetTarget(Actor target)
+    {
+        LockingTarget = target;
     }
 
     public void UnlockTarget()

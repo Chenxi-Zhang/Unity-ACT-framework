@@ -8,11 +8,19 @@ class DisableTurnClip : ActionClipBase
 
     public override void OnActionPlay()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            return;
+#endif
         actor.movement.TurnDisabled.AddStatus();
     }
 
     public override void OnActionPause()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            return;
+#endif
         actor.movement.TurnDisabled.RemoveStatus();
     }
 }

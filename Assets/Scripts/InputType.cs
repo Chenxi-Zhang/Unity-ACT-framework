@@ -10,6 +10,9 @@ public enum InputType
 
     Move,
     MoveCancel,
+    ForceActionStrafe,
     Attack,
     Interact,
+
+    ForceActionAI,
 }

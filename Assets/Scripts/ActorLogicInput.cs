@@ -9,6 +9,8 @@ public class ActorLogicInput : MonoBehaviour
     private bool IsLocking => actor.cameraStatus.IsLocking;
     private Actor LockingTarget => actor.cameraStatus.LockingTarget;
 
+    private InputBuffer input;
+    Dictionary<InputType, InputBuffer> inputBuffers = new();
     Dictionary<InputType, Action> inputActions = new();
     Dictionary<InputType, Action> inputThisFrame = new();
 
@@ -21,6 +23,21 @@ public class ActorLogicInput : MonoBehaviour
     private bool IsStrafe => canStrafe && IsLocking;
 
     private Vector3 inputMoveDirection = Vector3.zero;
+
+    void Awake()
+    {
+        RegisterInputAction(InputType.ForceActionStrafe, DoForceAction);
+        RegisterInputAction(InputType.ForceActionAI, DoForceAction);
+    }
+
+    private void DoForceAction()
+    {
+        if (input.next != null)
+        {
+            actor.actionPlayableDirector.PlayAction(input.next);
+            actor.actionPlayableDirector.onActionDone += input.onActionDone;
+        }
+    }
 
     public void RegisterInputAction(InputType inputType, Action action)
     {
@@ -71,7 +88,7 @@ public class ActorLogicInput : MonoBehaviour
             inputMoveDirection = faceWorldDir;
             if (action != actor.actionPlayableDirector.PlayingAction)
             {
-                actor.actionPlayableDirector.PlayAction(action);
+                InputForceAction(InputType.ForceActionStrafe, action);
             }
         }
         else
@@ -133,6 +150,18 @@ public class ActorLogicInput : MonoBehaviour
         TryAddInput(inputType);
     }
 
+    public void InputForceAction(InputType inputType, ActionTimelineAsset action, Action onActionDone = null)
+    {
+        if (action == null)
+            return;
+        inputBuffers[inputType] = new InputBuffer
+        {
+            next = action,
+            onActionDone = onActionDone,
+        };
+        TryAddInput(inputType);
+    }
+
     private void TryAddInput(InputType inputType)
     {
         if (inputActions.TryGetValue(inputType, out var action))
@@ -189,7 +218,10 @@ public class ActorLogicInput : MonoBehaviour
     void LateUpdate()
     {
         if (inputThisFrame.Count == 0)
+        {
+            ClearBuffers();
             return;
+        }
         InputType execType = InputType.None;
         Action execAction = null;
         foreach (var (key, value) in inputThisFrame)
@@ -201,6 +233,21 @@ public class ActorLogicInput : MonoBehaviour
             }
         }
         inputThisFrame.Clear();
+        inputBuffers.TryGetValue(execType, out input);
         execAction?.Invoke();
+        input = default;
+        ClearBuffers();
     }
+
+    public void ClearBuffers()
+    {
+        inputBuffers.Clear();
+    }
+
+}
+
+public struct InputBuffer
+{
+    public ActionTimelineAsset next;
+    public Action onActionDone;
 }

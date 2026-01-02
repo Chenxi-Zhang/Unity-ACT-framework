@@ -18,10 +18,16 @@ public class EnumByNameDrawer : PropertyDrawer
         Enum.TryParse(enumType, stringProp.stringValue, out object currentEnum);
 
         // Draw popup with null check
-        var newEnum = EditorGUI.EnumPopup(position, label, (Enum)currentEnum ?? GetDefaultEnumValue(enumType));
+        var newEnum = EditorGUI.EnumPopup(position, label, (Enum)currentEnum ?? GetDefaultEnumValue(enumType), CheckEnabled);
 
         // Save back as string
         stringProp.stringValue = newEnum.ToString();
+    }
+
+    private bool CheckEnabled(Enum @enum)
+    {
+        var val = (InputType)@enum;
+        return val != InputType.ForceActionAI && val != InputType.ForceActionStrafe;
     }
 
     private Enum GetDefaultEnumValue(Type enumType)

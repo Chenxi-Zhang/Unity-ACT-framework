@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -8,6 +9,8 @@ public class ActionPlayableDirector : BasePlayableDirector
 
     private ActionTimelineAsset playingAction;
     public ActionTimelineAsset PlayingAction => playingAction;
+
+    public event Action onActionDone;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +37,8 @@ public class ActionPlayableDirector : BasePlayableDirector
 
     public override void PlayAction(ActionTimelineAsset action, double initialTime = 0)
     {
+        onActionDone?.Invoke();
+        onActionDone = null;
         actorMovement.ResetRotation();
         playableDirector.Play(action.TimelineAsset);
         playableDirector.time = 0;

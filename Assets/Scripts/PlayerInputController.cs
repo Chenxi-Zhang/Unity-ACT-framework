@@ -17,6 +17,8 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     Vector2 rawMove;
     float distance;
+    bool attackPressed = false;
+    bool defencePressed = false;
 
     void Awake()
     {
@@ -56,6 +58,9 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
         var interactChecker = controllingActor.interactChecker;
         var mainObj = UpdateInteractObjects(interactChecker.interactObjs);
         interactChecker.SetFocusedObject(mainObj);
+
+        controllingActor.logicInput.InputButton(attackPressed ? InputType.AttackHold : InputType.AttackRelease);
+        controllingActor.logicInput.InputButton(defencePressed ? InputType.DefenceHold : InputType.DefenceRelease);
     }
 
     List<InteractObject> validObjects = new();
@@ -120,7 +125,13 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
     {
         if (context.started)
         {
+            attackPressed = true;
             controllingActor.logicInput.InputButton(InputType.Attack);
+        }
+        else if (context.canceled)
+        {
+            attackPressed = false;
+            controllingActor.logicInput.InputButton(InputType.AttackRelease);
         }
     }
 
@@ -182,4 +193,19 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
             cameraManager.Recenter();
         }
     }
+
+    public void OnDefence(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            defencePressed = true;
+            controllingActor.logicInput.InputButton(InputType.Defence);
+        }
+        else if (context.canceled)
+        {
+            defencePressed = false;
+            controllingActor.logicInput.InputButton(InputType.DefenceRelease);
+        }
+    }
+
 }

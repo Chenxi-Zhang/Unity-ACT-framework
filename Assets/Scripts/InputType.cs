@@ -12,7 +12,12 @@ public enum InputType
     MoveCancel,
     ForceActionStrafe,
     Attack,
+    AttackHold,
+    AttackRelease,
     Interact,
+    Defence,
+    DefenceHold,
+    DefenceRelease,
 
     ForceActionAI,
     ForceActionBeCounter,

@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     hitCounter:
-      name: 
+      name: defence
     ignoreHit: 0
     defenceData:
       counterAction: {fileID: 11400000}

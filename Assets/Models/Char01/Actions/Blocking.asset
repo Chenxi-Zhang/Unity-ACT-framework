@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     hitCounter:
-      name: 
+      name: defence
     ignoreHit: 0
     defenceData:
       counterAction: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}

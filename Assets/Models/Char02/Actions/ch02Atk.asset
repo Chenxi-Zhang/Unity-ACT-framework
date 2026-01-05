@@ -15,8 +15,7 @@ MonoBehaviour:
   attackData:
     hitCounters:
     - hitCounter:
-        name: 
-      ignoreCounter: 0
+        name: defence
       beCounterAction: {fileID: 11400000, guid: 552d0bc13e76dd54d992d129482aee28, type: 2}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
@@ -341,8 +340,7 @@ MonoBehaviour:
   attackData:
     hitCounters:
     - hitCounter:
-        name: 
-      ignoreCounter: 1
+        name: defence
       beCounterAction: {fileID: 0}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword

@@ -18,18 +18,21 @@ public class AttackColliderConfig
 
 public class AttackAsset : PlayableAsset
 {
+    public AttackData attackData;
     public List<AttackColliderConfig> configs = new();
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
         var playable = ScriptPlayable<AttackClip>.Create(graph);
         var behaviour = playable.GetBehaviour();
         behaviour.configs = configs;
+        behaviour.attackData = attackData;
         return playable;
     }
 }
 
 class AttackClip : ActionClipBase
 {
+    public AttackData attackData;
     public List<AttackColliderConfig> configs;
 
 #if UNITY_EDITOR
@@ -51,7 +54,7 @@ class AttackClip : ActionClipBase
     public override void OnActionPlay()
     {
         var attackColliderManager = actor.attackColliderManager;
-        attackColliderManager.EnableColliders(configs);
+        attackColliderManager.EnableColliders(configs, attackData);
     }
 
     public override void OnActionPause()

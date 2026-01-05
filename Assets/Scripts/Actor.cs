@@ -11,6 +11,7 @@ public class Actor : MonoBehaviour
     public ActorInteractChecker interactChecker;
     public ActorCameraStatus cameraStatus;
     public ActorAI actorAI;
+    public ActorBeHit beHit;
 
     private CharacterController _characterController;
     public CharacterController characterController

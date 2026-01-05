@@ -115,10 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  searchRadius: 3
 --- !u!1 &5325260693381165148
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +211,7 @@ MonoBehaviour:
   interactChecker: {fileID: 642266521299746986}
   cameraStatus: {fileID: 1349787423670794043}
   actorAI: {fileID: 411417108126707610}
+  beHit: {fileID: 1649198320801522232}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -329,6 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+  attackData:
+    hitCounters: []
   attackLayer: 0
 --- !u!114 &1649198320801522232
 MonoBehaviour:
@@ -343,6 +342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+  hitDefenceData:
+    counterAction: {fileID: 0}
+  hitCounters: []
 --- !u!114 &1349787423670794043
 MonoBehaviour:
   m_ObjectHideFlags: 0

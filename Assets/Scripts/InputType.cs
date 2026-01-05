@@ -15,5 +15,6 @@ public enum InputType
     Interact,
 
     ForceActionAI,
+    ForceActionBeCounter,
     ForceBeHit,
 }

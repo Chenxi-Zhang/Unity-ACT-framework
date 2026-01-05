@@ -7,6 +7,8 @@ using UnityEngine;
 public class ActorAttacker : MonoBehaviour
 {
     public Actor actor;
+
+    public AttackData attackData;
     [LayerField]
     public int attackLayer = 0;
 
@@ -25,6 +27,7 @@ public class ActorAttacker : MonoBehaviour
     public void ClearHitboxes()
     {
         hitCheckers.Clear();
+        attackData = null;
     }
 
     public void TryHit(ActorBeHit hittable)
@@ -35,4 +38,9 @@ public class ActorAttacker : MonoBehaviour
         hittable.BeHit(this);
     }
 
+    // 角色被对方Counter时调用
+    public void BeCounter(Actor enemy, AttackBeCounterData attackBeCounterData, DefenceData defenceData)
+    {
+        actor.logicInput.InputForceAction(InputType.ForceActionBeCounter, attackBeCounterData.beCounterAction);
+    }
 }

@@ -17,6 +17,10 @@ MonoBehaviour:
     - hitCounter:
         name: defence
       beCounterAction: {fileID: 11400000, guid: 552d0bc13e76dd54d992d129482aee28, type: 2}
+    - hitCounter:
+        name: dodge
+      ignoreCounter: 1
+      beCounterAction: {fileID: 0}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
@@ -341,6 +345,10 @@ MonoBehaviour:
     hitCounters:
     - hitCounter:
         name: defence
+      beCounterAction: {fileID: 0}
+    - hitCounter:
+        name: dodge
+      ignoreCounter: 1
       beCounterAction: {fileID: 0}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword

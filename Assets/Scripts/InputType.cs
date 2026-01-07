@@ -18,6 +18,9 @@ public enum InputType
     Defence,
     DefenceHold,
     DefenceRelease,
+    Sprint,
+    SprintHold,
+    SprintRelease,
 
     ForceActionAI,
     ForceActionBeCounter,

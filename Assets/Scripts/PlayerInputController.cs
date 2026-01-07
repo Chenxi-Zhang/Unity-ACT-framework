@@ -19,6 +19,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
     float distance;
     bool attackPressed = false;
     bool defencePressed = false;
+    bool sprintPressed = false;
 
     void Awake()
     {
@@ -61,6 +62,7 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
         controllingActor.logicInput.InputButton(attackPressed ? InputType.AttackHold : InputType.AttackRelease);
         controllingActor.logicInput.InputButton(defencePressed ? InputType.DefenceHold : InputType.DefenceRelease);
+        controllingActor.logicInput.InputButton(sprintPressed ? InputType.SprintHold : InputType.SprintRelease);
     }
 
     List<InteractObject> validObjects = new();
@@ -165,6 +167,16 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            sprintPressed = true;
+            controllingActor.logicInput.InputButton(InputType.Sprint);
+        }
+        else if (context.canceled)
+        {
+            sprintPressed = false;
+            controllingActor.logicInput.InputButton(InputType.SprintRelease);
+        }
     }
 
     public void OnLock(InputAction.CallbackContext context)

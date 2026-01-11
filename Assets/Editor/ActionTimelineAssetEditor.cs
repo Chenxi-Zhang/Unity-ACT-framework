@@ -5,8 +5,64 @@ using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Timeline;
 
+[CustomEditor(typeof(ActionTimelineAsset))]
 class ActionTimelineAssetEditor : Editor
 {
+    private SerializedProperty loopProp;
+    private SerializedProperty nextProp;
+    private SerializedProperty isSubProp;
+
+    private void OnEnable()
+    {
+        loopProp = serializedObject.FindProperty("loop");
+        nextProp = serializedObject.FindProperty("next");
+        isSubProp = serializedObject.FindProperty("isSub");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        EditorGUILayout.PropertyField(loopProp);
+        EditorGUILayout.PropertyField(nextProp);
+
+        // 特殊处理 isSub 的变化
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(isSubProp);
+        if (EditorGUI.EndChangeCheck())
+        {
+            serializedObject.ApplyModifiedProperties();
+            var asset = (ActionTimelineAsset)target;
+            SyncLayerMixerToTimeline(asset.TimelineAsset, asset.isSub);
+        }
+
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    public void SyncLayerMixerToTimeline(TimelineAsset timeline, bool isSub)
+    {
+        if (timeline == null) return;
+
+        // 遍历 TimelineAsset 中的所有轨道
+        foreach (var trackAsset in timeline.GetRootTracks())
+        {
+            // 遍历轨道上的所有剪辑
+            foreach (var clip in trackAsset.GetClips())
+            {
+                // 检查是否是 AnimMixerAsset
+                if (clip.asset is AnimMixerAsset animMixer)
+                {
+                    if (animMixer.layerMixer != isSub)
+                    {
+                        animMixer.layerMixer = isSub;
+                        EditorUtility.SetDirty(animMixer);
+                    }
+                }
+            }
+        }
+        EditorUtility.SetDirty(this);
+    }
+
     public static ActionTimelineAsset CreateActionTimelineAsset(string path)
     {
         var actionTimelineAsset = CreateInstance<ActionTimelineAsset>();

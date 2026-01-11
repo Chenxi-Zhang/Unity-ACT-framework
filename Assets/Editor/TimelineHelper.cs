@@ -50,4 +50,42 @@ class TimelineHelper
         }
         return null;
     }
+
+    public static TimelineAsset GetTimelineAssetFromClip(TimelineClip clip)
+    {
+        if (clip == null) return null;
+        TrackAsset track = clip.GetParentTrack();
+        if (track == null) return null;
+        return track.timelineAsset;
+    }
+
+    public static TimelineAsset GetTimelineAssetFromTrack(TrackAsset track)
+    {
+        if (track == null) return null;
+        return track.timelineAsset;
+    }
+
+    public static ActionTimelineAsset GetParentActionTimelineAsset(TimelineAsset timelineAsset)
+    {
+        if (timelineAsset == null) return null;
+
+        // 获取 TimelineAsset 的路径
+        string assetPath = AssetDatabase.GetAssetPath(timelineAsset);
+        if (string.IsNullOrEmpty(assetPath)) return null;
+
+        // 加载该路径下的所有资源
+        var allAssets = AssetDatabase.LoadAllAssetsAtPath(assetPath);
+
+        // 查找 ActionTimelineAsset 类型的资源（主资源）
+        foreach (var asset in allAssets)
+        {
+            if (asset is ActionTimelineAsset actionTimeline)
+            {
+                return actionTimeline;
+            }
+        }
+
+        return null;
+    }
+
 }

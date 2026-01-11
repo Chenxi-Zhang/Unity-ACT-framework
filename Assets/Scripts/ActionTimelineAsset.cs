@@ -8,6 +8,8 @@ public class ActionTimelineAsset : ScriptableObject
     public bool loop;
     public ActionTimelineAsset next;
 
+    public bool isSub = false;
+
     [SerializeField, HideInInspector]
     private TimelineAsset _timelineAsset;
     public TimelineAsset TimelineAsset => _timelineAsset;

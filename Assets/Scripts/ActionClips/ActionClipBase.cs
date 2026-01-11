@@ -1,4 +1,5 @@
 
+using UnityEngine;
 using UnityEngine.Playables;
 
 public abstract class ActionClipBase : PlayableBehaviour
@@ -15,7 +16,11 @@ public abstract class ActionClipBase : PlayableBehaviour
         var director = playable.GetGraph().GetResolver() as PlayableDirector;
         if (director == null)
             return;
-        actor = director.GetComponent<Actor>();
+        actor = director.GetGenericBinding(ActionPlayableDirector.ActorBindingObj) as Actor;
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            actor = director.GetComponent<Actor>();
+#endif
         if (actor == null)
             return;
         OnActionPlay();
@@ -26,6 +31,8 @@ public abstract class ActionClipBase : PlayableBehaviour
         if (!isPlaying)
             return;
         isPlaying = false;
+        if (actor == null)
+            return;
         OnActionPause();
     }
 

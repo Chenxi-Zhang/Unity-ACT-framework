@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937d2d838108d504099d4d57ce63d9f5, type: 3}
   m_Name: StrafeMoveAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  strafeMove: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}
 --- !u!114 &-5998153761931963482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: 9183057136684619453}
 --- !u!114 &437345170295365840
 MonoBehaviour:
@@ -451,6 +451,9 @@ MonoBehaviour:
   m_Name: TurnLeft
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 065e81c5f67cdf747a8dfa62591c96f0, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &5260549026714039307
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Standing Dive Forward
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 36e79e67fc607794382bb8e01a765884, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &-2164932838819155829
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: 9115124456495847974}
 --- !u!114 &4122171133631508131
 MonoBehaviour:

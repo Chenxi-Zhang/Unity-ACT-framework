@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 1
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: -6649461486724392201}
 --- !u!114 &3611713028887401696
 MonoBehaviour:
@@ -275,6 +276,9 @@ MonoBehaviour:
   m_Name: AnimMixerAsset
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: efb5db90e11c35d4d915a475fbf704a9, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &4238130923055396602
 MonoBehaviour:
   m_ObjectHideFlags: 1

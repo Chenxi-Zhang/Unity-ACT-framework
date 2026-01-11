@@ -35,7 +35,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937d2d838108d504099d4d57ce63d9f5, type: 3}
   m_Name: StrafeMoveAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  strafeMove: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}
 --- !u!114 &-2529996441343575845
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,6 +232,9 @@ MonoBehaviour:
   m_Name: Great Sword Walk
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: cc431fe2d574eca429e6237fa25a7c87, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 1
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: -7426123100390628339}
 --- !u!114 &3869344319355580209
 MonoBehaviour:

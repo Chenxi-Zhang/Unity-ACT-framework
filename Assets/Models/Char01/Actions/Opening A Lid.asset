@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Name: Opening A Lid
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 28b424c2195da3941806f672f4a83de9, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
-  ignoreRootMotion: 0
+  isSub: 0
   _timelineAsset: {fileID: 1447531249721879517}
 --- !u!114 &1447531249721879517
 MonoBehaviour:

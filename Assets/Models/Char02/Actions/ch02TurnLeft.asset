@@ -25,6 +25,9 @@ MonoBehaviour:
   m_Name: Great Sword Turn (1)
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: da7224a90e2ed144c9e0e2465256529b, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &-4226404866740074521
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: 1682758085403625228}
 --- !u!114 &1364956843252622608
 MonoBehaviour:
@@ -159,7 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937d2d838108d504099d4d57ce63d9f5, type: 3}
   m_Name: StrafeMoveAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  strafeMove: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}
 --- !u!114 &1682758085403625228
 MonoBehaviour:
   m_ObjectHideFlags: 0

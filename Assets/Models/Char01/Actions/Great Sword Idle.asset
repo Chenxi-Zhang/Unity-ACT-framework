@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937d2d838108d504099d4d57ce63d9f5, type: 3}
   m_Name: StrafeMoveAsset
   m_EditorClassIdentifier: 
-  strafeMove: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}
 --- !u!114 &-8567020281442823892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +420,9 @@ MonoBehaviour:
   m_Name: mixamo.com
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 73429e85922d5d1449fc94f8049a2736, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &-5449688077057927155
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -649,6 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 1
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: 8634018548604452406}
 --- !u!114 &32052014855876746
 MonoBehaviour:

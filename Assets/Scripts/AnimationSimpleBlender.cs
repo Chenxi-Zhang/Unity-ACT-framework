@@ -11,11 +11,14 @@ public class AnimationSimpleBlender : MonoBehaviour
 {
     public Animator animator;
 
+    List<LayerMixState> layerMixerList = new();
     Dictionary<AnimationClip, BlendState> assetDict = new();
     List<BlendState> orderedAsset = new();
 
     private PlayableGraph _graph;
     private AnimationMixerPlayable animationMixerPlayable;
+    // Animation mixer is the index 0 input of layer mixer
+    private AnimationLayerMixerPlayable layerMixerPlayable;
 
     public PlayableGraph Graph
     {
@@ -27,20 +30,32 @@ public class AnimationSimpleBlender : MonoBehaviour
             }
             _graph = PlayableGraph.Create();
             animationMixerPlayable = AnimationMixerPlayable.Create(_graph, 0);
+            layerMixerPlayable = AnimationLayerMixerPlayable.Create(_graph, 1);
+            layerMixerPlayable.ConnectInput(0, animationMixerPlayable, 0);
+            layerMixerPlayable.SetInputWeight(0, 1f);
             var playableOutput = AnimationPlayableOutput.Create(_graph, "Animation", animator);
-            playableOutput.SetSourcePlayable(animationMixerPlayable);
+            playableOutput.SetSourcePlayable(layerMixerPlayable);
             return _graph;
         }
     }
 
-    static float DEFAULT_TARGET_WEIGHT = 1f;
-    static float DEFAULT_BLEND_TIME = 0.1f;
+    const float DEFAULT_TARGET_WEIGHT = 1f;
+    const float DEFAULT_BLEND_TIME = 0.1f;
+
+    private class LayerMixState
+    {
+        public AnimationClip Clip;
+        public AvatarMask Mask;
+        public bool IsAdditive;
+        public BlendState State;
+    }
 
     // Track blend states of animations
     private class BlendState
     {
         private Playable playable;
         private Clamper weightClamper;
+        private float targetWeight;
         private float currentWeight;
         private float time;
 
@@ -58,20 +73,25 @@ public class AnimationSimpleBlender : MonoBehaviour
 
         float GetBlendTime(float blendTime, float expectFrom, float expectTo, float realFrom)
         {
+            if (Mathf.Approximately(expectFrom, expectTo))
+            {
+                return 0;
+            }
             return Mathf.Max(0, blendTime * (expectTo - realFrom) / (expectTo - expectFrom));
         }
 
-        public void SetBlendIn(float blendTime)
+        public void SetBlendIn(float blendTime, float targetWeight = DEFAULT_TARGET_WEIGHT)
         {
-            blendTime = GetBlendTime(blendTime, 0, DEFAULT_TARGET_WEIGHT, currentWeight);
+            this.targetWeight = targetWeight;
+            blendTime = GetBlendTime(blendTime, 0, targetWeight, currentWeight);
             var startWeight = Mathf.Max(0.001f, currentWeight);
-            weightClamper = new(0, blendTime, startWeight, DEFAULT_TARGET_WEIGHT);
+            weightClamper = new(0, blendTime, startWeight, targetWeight);
             isOut = false;
         }
 
         public void SetBlendOut(float blendTime)
         {
-            blendTime = GetBlendTime(blendTime, DEFAULT_TARGET_WEIGHT, 0, currentWeight);
+            blendTime = GetBlendTime(blendTime, targetWeight, 0, currentWeight);
             weightClamper = new(0, blendTime, currentWeight, 0);
             isOut = true;
         }
@@ -181,6 +201,119 @@ public class AnimationSimpleBlender : MonoBehaviour
         }
     }
 
+    public void SetLayerTime(AnimationClip clip, float time)
+    {
+        foreach (var item in layerMixerList)
+        {
+            if (item.Clip == clip)
+            {
+                item.State.SetTime(time);
+                return;
+            }
+        }
+    }
+
+    public void RemoveLayerClip(AnimationClip clip, float blendOutTime = -1)
+    {
+        foreach (var item in layerMixerList)
+        {
+            if (item.Clip == clip)
+            {
+                var state = item.State;
+                if (blendOutTime < 0)
+                    blendOutTime = DEFAULT_BLEND_TIME;
+                state.SetBlendOut(blendOutTime);
+                state.SetTime(0);
+                return;
+            }
+        }
+    }
+
+    private bool TryGetLayerClip(AnimationClip clip, out LayerMixState mixState)
+    {
+        foreach (var item in layerMixerList)
+        {
+            if (item.Clip == clip)
+            {
+                mixState = item;
+                return true;
+            }
+        }
+        mixState = null;
+        return false;
+    }
+
+    public void AddLayerClip(AnimationClip clip, AvatarMask avatarMask, bool isAdditive, float weight, float blendInTime = -1)
+    {
+        if (blendInTime < 0)
+            blendInTime = DEFAULT_BLEND_TIME;
+        if (!TryGetLayerClip(clip, out var mixState))
+        {
+            var playable = AnimationClipPlayable.Create(Graph, clip);
+            playable.SetApplyPlayableIK(true);
+            var blendState = new BlendState(playable);
+            mixState = new()
+            {
+                Clip = clip,
+                Mask = avatarMask,
+                IsAdditive = isAdditive,
+                State = blendState
+            };
+            layerMixerList.Add(mixState);
+        }
+        else
+        {
+            // layer mixer的顺序是有意义的！
+            layerMixerList.Remove(mixState);
+            mixState.Mask = avatarMask;
+            mixState.IsAdditive = isAdditive;
+            layerMixerList.Add(mixState);
+        }
+        var state = mixState.State;
+        state.SetBlendIn(blendInTime, weight);
+        state.SetTime(0);
+        // Rebuild layer mixer
+        BuildLayerMixerPlayable();
+    }
+
+    void BuildLayerMixerPlayable()
+    {
+        for (int i = 1; i < layerMixerPlayable.GetInputCount(); i++)
+        {
+            Graph.Disconnect(layerMixerPlayable, i);
+        }
+        DeleteLayerClips();
+        layerMixerPlayable.SetInputCount(layerMixerList.Count + 1); // +1 for base layer
+        for (int i = 0; i < layerMixerList.Count; i++)
+        {
+            var item = layerMixerList[i];
+            var state = item.State;
+            var mask = item.Mask;
+            var isAdditive = item.IsAdditive;
+            layerMixerPlayable.ConnectInput(i + 1, state.Playable, 0);
+            layerMixerPlayable.SetInputWeight(i + 1, state.CurrentWeight);
+            if (mask != null)
+            {
+                layerMixerPlayable.SetLayerMaskFromAvatarMask((uint)i + 1, mask);
+            }
+            layerMixerPlayable.SetLayerAdditive((uint)i + 1, isAdditive);
+        }
+    }
+
+    void DeleteLayerClips()
+    {
+        for (int i = layerMixerList.Count - 1; i >= 0; i--)
+        {
+            var mixState = layerMixerList[i];
+            var state = mixState.State;
+            if (state.ToRemove)
+            {
+                layerMixerList.RemoveAt(i);
+                state.DestroyPlayable();
+            }
+        }
+    }
+
     public void DoUpdate(float deltaTime)
     {
         foreach (var state in assetDict.Values)
@@ -192,6 +325,15 @@ public class AnimationSimpleBlender : MonoBehaviour
             }
         }
         UpdateMixerWeight();
+        foreach (var item in layerMixerList)
+        {
+            var state = item.State;
+            if (state.IsOut)
+            {
+                state.Update(deltaTime);
+            }
+        }
+        UpdateLayerMixerWeight();
         Graph.Evaluate();
     }
 
@@ -205,6 +347,16 @@ public class AnimationSimpleBlender : MonoBehaviour
             var state = orderedAsset[i];
             var weight = state.CurrentWeight;
             animationMixerPlayable.SetInputWeight(i, weight / weightSum);
+        }
+    }
+
+    private void UpdateLayerMixerWeight()
+    {
+        for (int i = 0; i < layerMixerList.Count; i++)
+        {
+            var item = layerMixerList[i];
+            var state = item.State;
+            layerMixerPlayable.SetInputWeight(i + 1, state.CurrentWeight);
         }
     }
 

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: BlockImpact
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 58404559d82ab4443a3c84e86f80d091, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 11400000, guid: 739c5c78d713ab74a803d84b57525258, type: 2}
+  isSub: 0
   _timelineAsset: {fileID: 7087865814620061270}
 --- !u!114 &2486806896603888578
 MonoBehaviour:

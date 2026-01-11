@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937d2d838108d504099d4d57ce63d9f5, type: 3}
   m_Name: StrafeMoveAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  strafeMove: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}
 --- !u!114 &-4743003697470524964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 1
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: -7883970677707813727}
 --- !u!114 &276571432476239469
 MonoBehaviour:
@@ -463,3 +463,6 @@ MonoBehaviour:
   m_Name: Great Sword Strafe_right
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 5f326e4cd92cf584b841291553d990a2, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}

@@ -19,7 +19,6 @@ MonoBehaviour:
       beCounterAction: {fileID: 11400000, guid: 552d0bc13e76dd54d992d129482aee28, type: 2}
     - hitCounter:
         name: dodge
-      ignoreCounter: 1
       beCounterAction: {fileID: 0}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
@@ -271,6 +270,9 @@ MonoBehaviour:
   m_Name: Great Sword Slash
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 98f6357c8e3267e4a8efaaf9c5dedc6a, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &-936551884937596504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: -936551884937596504}
 --- !u!114 &4171575572938301947
 MonoBehaviour:
@@ -348,7 +351,6 @@ MonoBehaviour:
       beCounterAction: {fileID: 0}
     - hitCounter:
         name: dodge
-      ignoreCounter: 1
       beCounterAction: {fileID: 0}
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword

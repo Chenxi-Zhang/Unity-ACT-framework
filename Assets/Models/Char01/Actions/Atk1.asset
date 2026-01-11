@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5cead090ef4234abdff46334b024d2, type: 3}
   m_Name: AttackAsset
   m_EditorClassIdentifier: 
+  attackData:
+    hitCounters: []
   configs:
   - path: ModelRoot/Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.30317616, y: 0.08473478, z: 0.055924617}
@@ -125,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   next: {fileID: 0}
+  isSub: 0
   _timelineAsset: {fileID: 6435525106928391343}
 --- !u!114 &6286984638151027482
 MonoBehaviour:
@@ -139,6 +142,9 @@ MonoBehaviour:
   m_Name: Atk1
   m_EditorClassIdentifier: 
   clip: {fileID: -203655887218126122, guid: 03527866e70415b43a8294490251aecf, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
 --- !u!114 &6435525106928391343
 MonoBehaviour:
   m_ObjectHideFlags: 0

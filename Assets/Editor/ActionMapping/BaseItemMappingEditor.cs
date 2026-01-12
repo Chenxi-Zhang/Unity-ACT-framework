@@ -57,6 +57,29 @@ public abstract class BaseItemMappingEditor : Editor
         }
     }
 
+    public void DrawAllKeysItem<K, V>(BaseItemMapping<K, V> mapping)
+    {
+        // 显示标题
+        EditorGUILayout.LabelField($"{typeof(K).Name} - {typeof(V).Name} Mappings", EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+
+        // 使用 SerializedProperty 来遍历 list
+        var listProperty = serializedObject.FindProperty("list");
+        if (listProperty != null && listProperty.isArray)
+        {
+            for (int i = 0; i < listProperty.arraySize; i++)
+            {
+                var element = listProperty.GetArrayElementAtIndex(i);
+                var keyProperty = element.FindPropertyRelative("key");
+                var valueProperty = element.FindPropertyRelative("value");
+                if (keyProperty != null && valueProperty != null)
+                {
+                    EditorGUILayout.PropertyField(valueProperty, new GUIContent(GetKeyLabel(keyProperty)));
+                }
+            }
+        }
+    }
+
     protected abstract IEnumerable<K> GetAllKeys<K>();
 
     public void ShowAddMenu<K, V>(BaseItemMapping<K, V> mapping)

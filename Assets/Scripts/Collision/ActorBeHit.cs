@@ -1,6 +1,4 @@
 
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ActorBeHit : MonoBehaviour, IHittable
@@ -8,13 +6,14 @@ public class ActorBeHit : MonoBehaviour, IHittable
     public Actor actor;
 
     public DefenceData hitDefenceData;
+    public ShockTypeActionMappingManager shockTypeActionMappingManager = new();
     [HideInInspector]
-    public List<HitCounterDefenceData> hitCounters;
+    public HitCounterMappingManager hitCounterMappingManager = new();
 
     // 根据攻击带有的hitCounter属性，查找角色在防御上是否有对应的hitCounter，从而获取对应的防御数据
-    private bool TryGetHitCounterDefenceData(AttackData attackData, out HitCounterDefenceData hitCounterDefData, out AttackBeCounterData attackBeCounterData)
+    private bool TryGetHitCounterDefenceData(AttackData attackData, out HitCounterData hitCounterData, out AttackBeCounterData attackBeCounterData)
     {
-        hitCounterDefData = null;
+        hitCounterData = null;
         attackBeCounterData = null;
         if (attackData.hitCounters == null)
             return false;
@@ -23,14 +22,11 @@ public class ActorBeHit : MonoBehaviour, IHittable
             var attackHitCounter = attackData.hitCounters[i];
             if (string.IsNullOrEmpty(attackHitCounter.hitCounter.name))
                 continue;
-            for (int j = hitCounters.Count - 1; j >= 0; j--)
+            if (hitCounterMappingManager.TryGetValue(attackHitCounter.hitCounter, out var mapping))
             {
-                if (hitCounters[j].hitCounter.name == attackHitCounter.hitCounter.name)
-                {
-                    hitCounterDefData = hitCounters[j];
-                    attackBeCounterData = attackHitCounter;
-                    return true;
-                }
+                hitCounterData = mapping;
+                attackBeCounterData = attackHitCounter;
+                return true;
             }
         }
         return false;
@@ -42,30 +38,27 @@ public class ActorBeHit : MonoBehaviour, IHittable
             // don't hit self
             return;
         Debug.Log($"{attacker.gameObject.name} Hits {actor.gameObject.name}");
-        DefenceData defenceData;
-        if (TryGetHitCounterDefenceData(attacker.attackData, out var hitCounterDefData, out var attackBeCounterData))
+        ActionTimelineAsset action = null;
+        if (TryGetHitCounterDefenceData(attacker.attackData, out var hitCounterData, out var attackBeCounterData))
         {
-            if (hitCounterDefData.ignoreHit)
+            if (hitCounterData.ignoreHit)
             {
                 return;
             }
-            defenceData = hitCounterDefData.defenceData;
-            attacker.BeCounter(actor, attackBeCounterData, defenceData);
+            if (hitCounterData.shockTypeActionMapping != null)
+            {
+                hitCounterData.shockTypeActionMapping.TryGetValue(attacker.attackData.shockType, out action);
+            }
+            attacker.BeCounter(actor, attackBeCounterData, hitCounterData.defenceData);
         }
         else
         {
-            defenceData = hitDefenceData;
+            shockTypeActionMappingManager.TryGetValue(attacker.attackData.shockType, out action);
         }
-        var action = defenceData.GetActionFromShock(attacker.attackData.shockType);
-        actor.logicInput.InputForceAction(InputType.ForceBeHit, action);
+        if (action != null)
+        {
+            actor.logicInput.InputForceAction(InputType.ForceBeHit, action);
+        }
     }
 
-}
-
-[Serializable]
-public class HitCounterDefenceData
-{
-    public HitCounterType hitCounter;
-    public bool ignoreHit;
-    public DefenceData defenceData;
 }

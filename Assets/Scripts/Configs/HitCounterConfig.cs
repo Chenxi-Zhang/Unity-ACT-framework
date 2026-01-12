@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HitCounterConfig : ScriptableObject
@@ -11,16 +12,56 @@ public class HitCounterConfig : ScriptableObject
 
     public HitCounterType[] Data => _data;
 
-    public int GetHitCounterTypeIndex(HitCounterType hitCounterType)
+    // 运行时缓存
+    private Dictionary<string, int> _runtimeCache;
+
+    private void OnEnable()
+    {
+        BuildRuntimeCache();
+    }
+
+    private void BuildRuntimeCache()
+    {
+        _runtimeCache = new Dictionary<string, int>(_data.Length);
+        for (int i = 0; i < _data.Length; i++)
+        {
+            _runtimeCache[_data[i].name] = i;
+        }
+    }
+
+
+#if UNITY_EDITOR
+    public int GetTypeIndexInEditor(HitCounterType type)
     {
         for (int i = 0; i < _data.Length; i++)
         {
-            if (_data[i].name == hitCounterType.name)
+            if (_data[i].name == type.name)
             {
                 return i;
             }
         }
         return -1;
+    }
+#endif
+
+    public int GetTypeIndex(HitCounterType type)
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return GetTypeIndexInEditor(type);
+        }
+#endif
+        if (_runtimeCache == null)
+        {
+            BuildRuntimeCache();
+        }
+        return _runtimeCache.TryGetValue(type.name, out int index) ? index : -1;
+    }
+
+    public int Compare(HitCounterType a, HitCounterType b)
+    {
+        return GetTypeIndex(a).CompareTo(GetTypeIndex(b));
     }
 
 }
@@ -29,4 +70,9 @@ public class HitCounterConfig : ScriptableObject
 public struct HitCounterType
 {
     public string name;
+
+    public override string ToString()
+    {
+        return name;
+    }
 }

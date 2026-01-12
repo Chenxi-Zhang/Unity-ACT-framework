@@ -1,38 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-994570114314944111
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c26b1a09fdab4d7489f5dcceec6fd95f, type: 3}
-  m_Name: BeHit
-  m_EditorClassIdentifier: 
-  clip: {fileID: -203655887218126122, guid: 5b31ae3bfef8af445a9002a44704e654, type: 3}
-  layerMixer: 0
-  weight: 1
-  mask: {fileID: 0}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e98e0bbcb84198448e8b9c18e328572, type: 3}
-  m_Name: BeHit
-  m_EditorClassIdentifier: 
-  loop: 0
-  next: {fileID: 0}
-  layerMixer: 0
-  _timelineAsset: {fileID: 1858676449359215430}
---- !u!114 &379133889289171293
+--- !u!114 &-3280337182006319950
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,16 +18,16 @@ MonoBehaviour:
   m_Muted: 0
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
-  m_Parent: {fileID: 1858676449359215430}
+  m_Parent: {fileID: 6744855849331380157}
   m_Children: []
   m_Clips:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -994570114314944111}
-    m_Duration: 1.2666666666666666
+    m_Asset: {fileID: 2883101772379783539}
+    m_Duration: 1.6666666666666667
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 379133889289171293}
+    m_ParentTrack: {fileID: -3280337182006319950}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -121,10 +89,42 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: BeHit
+    m_DisplayName: Receiving An Uppercut
   m_Markers:
     m_Objects: []
---- !u!114 &1858676449359215430
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e98e0bbcb84198448e8b9c18e328572, type: 3}
+  m_Name: BeHit2
+  m_EditorClassIdentifier: 
+  loop: 0
+  next: {fileID: 0}
+  layerMixer: 0
+  _timelineAsset: {fileID: 6744855849331380157}
+--- !u!114 &2883101772379783539
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26b1a09fdab4d7489f5dcceec6fd95f, type: 3}
+  m_Name: Receiving An Uppercut
+  m_EditorClassIdentifier: 
+  clip: {fileID: -203655887218126122, guid: 9555bdb61ab2f2b42946d29e5bbe2f12, type: 3}
+  layerMixer: 0
+  weight: 1
+  mask: {fileID: 0}
+--- !u!114 &6744855849331380157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
-  - {fileID: 379133889289171293}
-  m_FixedDuration: 1.2666666666666666
+  - {fileID: -3280337182006319950}
+  m_FixedDuration: 1.6666666666666667
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1

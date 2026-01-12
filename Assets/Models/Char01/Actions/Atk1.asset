@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackData:
     hitCounters: []
+    shockType:
+      name: 
   configs:
   - path: ModelRoot/Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.30317616, y: 0.08473478, z: 0.055924617}

@@ -24,6 +24,34 @@ PrefabInstance:
       propertyPath: hitDefenceData.counterAction
       value: 
       objectReference: {fileID: 11400000, guid: 7e4881987a0394b49b2a3842bf477be3, type: 2}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[0].shockType.name
+      value: "\u98A4\u6296"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[1].shockType.name
+      value: "\u53D7\u51FB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[2].shockType.name
+      value: "\u51FB\u98DE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[0].actionTimelineAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e4881987a0394b49b2a3842bf477be3, type: 2}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[1].actionTimelineAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fd9e9bac7a593d47aad16c9420a62f3, type: 2}
+    - target: {fileID: 1649198320801522232, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: hitDefenceData.responseActions.Array.data[2].actionTimelineAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 804746763ecb7fc42bd531c15a5bdd44, type: 2}
     - target: {fileID: 2609364236034990598, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_Height
       value: 1.44

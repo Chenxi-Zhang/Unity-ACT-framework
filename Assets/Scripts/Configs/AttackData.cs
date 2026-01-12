@@ -5,6 +5,7 @@ using System;
 public class AttackData
 {
     public AttackBeCounterData[] hitCounters;
+    public ShockType shockType;
 }
 
 [Serializable]

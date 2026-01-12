@@ -56,7 +56,8 @@ public class ActorBeHit : MonoBehaviour, IHittable
         {
             defenceData = hitDefenceData;
         }
-        actor.logicInput.InputForceAction(InputType.ForceBeHit, defenceData.counterAction);
+        var action = defenceData.GetActionFromShock(attacker.attackData.shockType);
+        actor.logicInput.InputForceAction(InputType.ForceBeHit, action);
     }
 
 }

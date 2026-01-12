@@ -20,6 +20,8 @@ MonoBehaviour:
     - hitCounter:
         name: dodge
       beCounterAction: {fileID: 0}
+    shockType:
+      name: "\u53D7\u51FB"
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
@@ -309,6 +311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackData:
     hitCounters: []
+    shockType:
+      name: "\u51FB\u98DE"
+    pushDistance: 0
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
@@ -352,6 +357,9 @@ MonoBehaviour:
     - hitCounter:
         name: dodge
       beCounterAction: {fileID: 0}
+    shockType:
+      name: "\u98A4\u6296"
+    pushDistance: 0
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}

@@ -335,21 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7b9de6d8e8bcd498bd88086a7a5683, type: 3}
   m_Name: AddHitCounterDefenceDataAsset
   m_EditorClassIdentifier: 
-  data:
-    hitCounter:
-      name: defence
-    ignoreHit: 0
-    defenceData:
-      responseActions:
-      - shockType:
-          name: "\u98A4\u6296"
-        actionTimelineAsset: {fileID: 11400000, guid: 7e4881987a0394b49b2a3842bf477be3, type: 2}
-      - shockType:
-          name: "\u53D7\u51FB"
-        actionTimelineAsset: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}
-      - shockType:
-          name: "\u51FB\u98DE"
-        actionTimelineAsset: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}
+  mapping: {fileID: 11400000, guid: 9b8d9464dc3657045940a5a925c7a915, type: 2}
 --- !u!114 &7806234656655736371
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011ea5078d36b5943be31f365c3df2de, type: 3}
+  m_Name: DefenceShockMapping
+  m_EditorClassIdentifier: 
+  list:
+  - key:
+      name: "\u98A4\u6296"
+    value: {fileID: 11400000, guid: 7e4881987a0394b49b2a3842bf477be3, type: 2}
+  - key:
+      name: "\u53D7\u51FB"
+    value: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}
+  - key:
+      name: "\u51FB\u98DE"
+    value: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}

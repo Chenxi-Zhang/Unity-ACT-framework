@@ -44,12 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7b9de6d8e8bcd498bd88086a7a5683, type: 3}
   m_Name: AddHitCounterDefenceDataAsset
   m_EditorClassIdentifier: 
-  data:
-    hitCounter:
-      name: defence
-    ignoreHit: 0
-    defenceData:
-      counterAction: {fileID: 11400000}
+  mapping: {fileID: 11400000, guid: 9b8d9464dc3657045940a5a925c7a915, type: 2}
 --- !u!114 &2903783689880122597
 MonoBehaviour:
   m_ObjectHideFlags: 1

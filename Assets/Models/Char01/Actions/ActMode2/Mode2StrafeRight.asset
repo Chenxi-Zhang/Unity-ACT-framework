@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e98e0bbcb84198448e8b9c18e328572, type: 3}
   m_Name: Mode2StrafeRight
   m_EditorClassIdentifier: 
-  loop: 0
+  loop: 1
   next: {fileID: 0}
   isSub: 0
   _timelineAsset: {fileID: -1866171584513697519}

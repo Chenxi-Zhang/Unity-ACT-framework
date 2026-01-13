@@ -26,7 +26,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: IdleTurnLeft
-  action: {fileID: 11400000, guid: c22b82d0f7f947148af790be900116f4, type: 2}
 --- !u!114 &-8373581168644880119
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +115,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DefenceHold->Blocking
+    m_DisplayName: 'Input: DefenceHold'
   m_Markers:
     m_Objects: []
 --- !u!114 &-8053635254126968578
@@ -131,6 +130,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960b8da4bb4f15f488a8bcd603f073e3, type: 3}
   m_Name: DisableTurningToLockAsset
   m_EditorClassIdentifier: 
+--- !u!114 &-7818051120190492707
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf03af11a3d42645af063f0c1fc373e, type: 3}
+  m_Name: Switch Weapon Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 8634018548604452406}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: 3114653754000122622}
+    m_Duration: 3.699999999998
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7818051120190492707}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwitchWeaponAsset
+  m_Markers:
+    m_Objects: []
 --- !u!114 &-7661728553060753120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +311,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: IdleTurnLeft->TurnLeft
+    m_DisplayName: 'Input: IdleTurnLeft'
   m_Markers:
     m_Objects: []
 --- !u!114 &-7162392594974876213
@@ -404,7 +495,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Move->Walk
+    m_DisplayName: 'Input: Move'
   m_Markers:
     m_Objects: []
 --- !u!114 &-5549900667467131410
@@ -423,6 +514,7 @@ MonoBehaviour:
   layerMixer: 0
   weight: 1
   mask: {fileID: 0}
+  isAdditive: 0
 --- !u!114 &-5449688077057927155
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,7 +621,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: IdleTurnRight
-  action: {fileID: 11400000, guid: 9c12daf85e8625443b36434609bcd574, type: 2}
 --- !u!114 &-3565715632282575941
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,7 +635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: IdleTurnBack
-  action: {fileID: 11400000, guid: 9f747f8a5366a044daa2097d3301547c, type: 2}
 --- !u!114 &-2804894684804434963
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,7 +724,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Attack->Atk1
+    m_DisplayName: 'Input: Attack'
   m_Markers:
     m_Objects: []
 --- !u!114 &11400000
@@ -667,7 +757,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: Move
-  action: {fileID: 11400000, guid: 6c2fd8ea20f15414ba39cab7e944252b, type: 2}
 --- !u!114 &545957965359970343
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -757,7 +846,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: IdleTurnBack->TurnBack
+    m_DisplayName: 'Input: IdleTurnBack'
   m_Markers:
     m_Objects: []
 --- !u!114 &845573427966034738
@@ -786,7 +875,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: Attack
-  action: {fileID: 11400000, guid: fbb8ce88dba366d41b8092d1b9f44408, type: 2}
 --- !u!114 &3023706439670196687
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -879,6 +967,18 @@ MonoBehaviour:
     m_DisplayName: DisableTurnAsset
   m_Markers:
     m_Objects: []
+--- !u!114 &3114653754000122622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5595c65d0469c8a4b89944518d20fbc2, type: 3}
+  m_Name: SwitchWeaponAsset(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &3355247870907713937
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -893,7 +993,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: DefenceHold
-  action: {fileID: 11400000, guid: 739c5c78d713ab74a803d84b57525258, type: 2}
 --- !u!114 &3793993340364115496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,7 +1082,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: IdleTurnRight->TurnRight
+    m_DisplayName: 'Input: IdleTurnRight'
   m_Markers:
     m_Objects: []
 --- !u!114 &5096903797400801682
@@ -1179,7 +1278,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Sprint->Sprint
+    m_DisplayName: 'Input: Sprint'
   m_Markers:
     m_Objects: []
 --- !u!114 &8103962473867472824
@@ -1196,7 +1295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType:
     value: Sprint
-  action: {fileID: 11400000, guid: 11ea51d8fa9a1694396ed90075552b20, type: 2}
 --- !u!114 &8634018548604452406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,6 +1320,7 @@ MonoBehaviour:
   - {fileID: 7493524087197517696}
   - {fileID: -8373581168644880119}
   - {fileID: 7749866284545367815}
+  - {fileID: -7818051120190492707}
   m_FixedDuration: 2
   m_EditorSettings:
     m_Framerate: 60

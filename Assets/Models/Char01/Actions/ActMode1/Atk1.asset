@@ -147,6 +147,7 @@ MonoBehaviour:
   layerMixer: 0
   weight: 1
   mask: {fileID: 0}
+  isAdditive: 0
 --- !u!114 &6435525106928391343
 MonoBehaviour:
   m_ObjectHideFlags: 0

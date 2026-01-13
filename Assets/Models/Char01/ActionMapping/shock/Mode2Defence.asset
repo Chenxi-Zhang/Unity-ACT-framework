@@ -18,7 +18,7 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 7e4881987a0394b49b2a3842bf477be3, type: 2}
   - key:
       name: "\u53D7\u51FB"
-    value: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}
+    value: {fileID: 11400000, guid: 3286b83c9716a864a8c34659426e4a6f, type: 2}
   - key:
       name: "\u51FB\u98DE"
-    value: {fileID: 11400000, guid: f8b8f5d083c87c14898937ab488b0ed4, type: 2}
+    value: {fileID: 11400000, guid: 3286b83c9716a864a8c34659426e4a6f, type: 2}

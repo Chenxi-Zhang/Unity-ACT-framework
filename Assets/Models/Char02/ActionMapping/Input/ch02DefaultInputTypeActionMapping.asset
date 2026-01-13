@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9f674aed7f1ec4ba33c3bec0814e16, type: 3}
+  m_Name: ch02DefaultInputTypeActionMapping
+  m_EditorClassIdentifier: 
+  list:
+  - key:
+      value: IdleTurnLeft
+    value: {fileID: 11400000, guid: b244d80bdb5c9f741b2a9c1cb0617bc0, type: 2}
+  - key:
+      value: IdleTurnRight
+    value: {fileID: 11400000, guid: d5c0b1ab0a6aa6e4b8ee517d9eff136c, type: 2}
+  - key:
+      value: IdleTurnBack
+    value: {fileID: 11400000, guid: 488dc29329e673a428c97ff1952d9761, type: 2}
+  - key:
+      value: IdleTurnStop
+    value: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
+  - key:
+      value: Move
+    value: {fileID: 11400000, guid: 6ef2a9b942faa3742b712b59fb9170e9, type: 2}
+  - key:
+      value: MoveCancel
+    value: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
+  - key:
+      value: Attack
+    value: {fileID: 11400000, guid: 80f36b22bde62ef4393d8d7171aed030, type: 2}
+  - key:
+      value: AttackHold
+    value: {fileID: 0}
+  - key:
+      value: AttackRelease
+    value: {fileID: 0}
+  - key:
+      value: Interact
+    value: {fileID: 0}
+  - key:
+      value: Defence
+    value: {fileID: 11400000, guid: 851fbfed8d67494488f78b72e7712f42, type: 2}
+  - key:
+      value: DefenceHold
+    value: {fileID: 11400000, guid: 851fbfed8d67494488f78b72e7712f42, type: 2}
+  - key:
+      value: DefenceRelease
+    value: {fileID: 0}
+  - key:
+      value: Sprint
+    value: {fileID: 0}
+  - key:
+      value: SprintHold
+    value: {fileID: 0}
+  - key:
+      value: SprintRelease
+    value: {fileID: 0}
+  Idle: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
+  Strafe: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}

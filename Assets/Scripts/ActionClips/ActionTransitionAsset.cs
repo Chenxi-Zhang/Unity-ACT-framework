@@ -4,13 +4,11 @@ using UnityEngine.Playables;
 public class ActionTransitionAsset : PlayableAsset
 {
     public EnumByName<InputType> inputType;
-    public ActionTimelineAsset action;
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
         var playable = ScriptPlayable<ActionTransitionClip>.Create(graph);
         ActionTransitionClip clip = playable.GetBehaviour();
-        clip.action = action;
         clip.inputType = inputType;
         return playable;
     }
@@ -19,7 +17,6 @@ public class ActionTransitionAsset : PlayableAsset
 public class ActionTransitionClip : ActionClipBase
 {
     public InputType inputType;
-    public ActionTimelineAsset action;
 
     public override void OnActionPlay()
     {
@@ -34,7 +31,7 @@ public class ActionTransitionClip : ActionClipBase
 
     void OnInputTriggered()
     {
-        actor.actionPlayableDirector.PlayAction(action);
+        actor.actionPlayableDirector.TriggerInputType(inputType);
     }
 
     public override void OnActionPause()

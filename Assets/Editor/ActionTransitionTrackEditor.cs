@@ -30,9 +30,7 @@ class ActionTransitionClipEditor : ClipEditor
         if (asset == null)
             return;
         var inputType = asset.inputType;
-        var action = asset.action;
-        var nextActionName = action != null ? action.name : "无";
-        var name = $"{inputType}->{nextActionName}";
+        var name = $"Input: {inputType}";
         clip.displayName = name;
     }
 

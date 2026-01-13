@@ -5,7 +5,7 @@ using UnityEngine;
 public class ActorLogicInput : MonoBehaviour
 {
     public Actor actor;
-    public StrafeMoveAnimation strafeMoveAnimation;
+    public StrafeMoveAnimation strafeMoveAnimation => actor.actionPlayableDirector.inputActionMgr.GetStrafe();
     private bool IsLocking => actor.cameraStatus.IsLocking;
     private Actor LockingTarget => actor.cameraStatus.LockingTarget;
 

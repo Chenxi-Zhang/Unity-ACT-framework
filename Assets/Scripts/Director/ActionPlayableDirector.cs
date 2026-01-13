@@ -6,7 +6,8 @@ using UnityEngine.Playables;
 public class ActionPlayableDirector : BasePlayableDirector
 {
     public Actor actor;
-    public ActionTimelineAsset Idle;
+    public InputTypeActionMappingManager inputActionMgr = new();
+    public ActionTimelineAsset Idle => inputActionMgr.GetIdleAction();
     public ActorMovement actorMovement;
 
     private ActionTimelineAsset playingAction;
@@ -52,6 +53,19 @@ public class ActionPlayableDirector : BasePlayableDirector
                 DoPlayAction(playingAction.next, initialTime);
             else
                 DoPlayAction(Idle, initialTime);
+        }
+    }
+
+    public void TriggerInputType(InputType inputType)
+    {
+        if (inputActionMgr.TryGetValue(inputType, out var value))
+        {
+            PlayAction(value);
+        }
+        else
+        {
+            Debug.LogWarning($"No action found for input type {inputType}");
+            PlayAction(Idle);
         }
     }
 

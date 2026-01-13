@@ -29,6 +29,20 @@ public class EnumByName<T> where T : struct, Enum
         return new EnumByName<T> { Value = enumValue };
     }
 
+    public override bool Equals(object obj)
+    {
+        if (obj is EnumByName<T> enumByName)
+        {
+            return value.Equals(enumByName.value);
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return value.GetHashCode();
+    }
+
     public override string ToString()
     {
         return value;

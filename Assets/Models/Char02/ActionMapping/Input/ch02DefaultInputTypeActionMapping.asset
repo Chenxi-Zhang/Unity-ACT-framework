@@ -32,6 +32,9 @@ MonoBehaviour:
       value: MoveCancel
     value: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
   - key:
+      value: SwitchWeapon
+    value: {fileID: 0}
+  - key:
       value: Attack
     value: {fileID: 11400000, guid: 80f36b22bde62ef4393d8d7171aed030, type: 2}
   - key:
@@ -61,5 +64,8 @@ MonoBehaviour:
   - key:
       value: SprintRelease
     value: {fileID: 0}
+  - key:
+      value: Death
+    value: {fileID: 11400000, guid: 9f6110b964c94fb4c9e746b46be58844, type: 2}
   Idle: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
   Strafe: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}

@@ -39,6 +39,8 @@ public class ActorBeHit : MonoBehaviour, IHittable
         if (attacker.actor == actor)
             // don't hit self
             return;
+        if (!actor.data.IsAlive)
+            return;
         Debug.Log($"{attacker.gameObject.name} Hits {actor.gameObject.name}");
         ActionTimelineAsset action = null;
         if (TryGetHitCounterDefenceData(attacker.attackData, out var hitCounterData, out var attackBeCounterData))

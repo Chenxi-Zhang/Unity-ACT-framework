@@ -64,5 +64,8 @@ MonoBehaviour:
   - key:
       value: SprintRelease
     value: {fileID: 0}
+  - key:
+      value: Death
+    value: {fileID: 11400000, guid: cf975861337f8c14e953a51199771347, type: 2}
   Idle: {fileID: 11400000, guid: f3a846af7d98ed64394310127e40880a, type: 2}
   Strafe: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}

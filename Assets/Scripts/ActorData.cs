@@ -6,6 +6,8 @@ public class ActorData : MonoBehaviour
     public Actor actor;
     public StatusIndicator statusIndicator;
 
+    public bool IsAlive { get; private set; }
+
     [SerializeField]
     private RuntimeData staticData;
     private RuntimeData runtimeData;
@@ -19,6 +21,7 @@ public class ActorData : MonoBehaviour
 
     public void Initialize()
     {
+        IsAlive = true;
         runtimeData = new();
         runtimeData.maxHp = staticData.maxHp;
         SetHp(staticData.hp);
@@ -36,6 +39,10 @@ public class ActorData : MonoBehaviour
 
     public void SetHp(int hp)
     {
+        if (!IsAlive)
+        {
+            return;
+        }
         runtimeData.hp = hp;
         if (runtimeData.hp > runtimeData.maxHp)
         {
@@ -44,8 +51,15 @@ public class ActorData : MonoBehaviour
         else if (runtimeData.hp < 0)
         {
             runtimeData.hp = 0;
+            ProcessDeath();
         }
         statusIndicator.SetHpRatio((float)runtimeData.hp / runtimeData.maxHp);
+    }
+
+    private void ProcessDeath()
+    {
+        IsAlive = false;
+        actor.logicInput.InputButton(InputType.Death);
     }
 
     public void AddHp(float value)

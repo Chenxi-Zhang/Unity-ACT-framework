@@ -30,6 +30,7 @@ public class ActorLogicInput : MonoBehaviour
         RegisterInputAction(InputType.ForceActionAI, DoForceAction);
         RegisterInputAction(InputType.ForceBeHit, DoForceAction);
         RegisterInputAction(InputType.ForceActionBeCounter, DoForceAction);
+        RegisterInputAction(InputType.Death, () => actor.actionPlayableDirector.TriggerInputType(InputType.Death));
     }
 
     private void DoForceAction()

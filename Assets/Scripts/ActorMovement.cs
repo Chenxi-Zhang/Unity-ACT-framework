@@ -126,7 +126,7 @@ public class ActorMovement : MonoBehaviour
     void OnAnimatorIK(int layerIndex)
     {
         float lookWeightTarget = 0.0f;
-        if (IsLocking)
+        if (IsLocking && actor.data.IsAlive)
         {
             lookingPosition = LockingTarget.cameraStatus.cameraTarget.position;
             Vector3 targetDirection = lookingPosition - actorPosition;

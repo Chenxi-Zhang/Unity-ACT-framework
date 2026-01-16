@@ -43,6 +43,8 @@ public class ActionPlayableDirector : BasePlayableDirector
 
     private void OnPlayableDirectorStopped(double initialTime = 0f)
     {
+        if (!actor.data.IsAlive)
+            return;
         if (playingAction.loop)
         {
             DoPlayAction(playingAction, initialTime);

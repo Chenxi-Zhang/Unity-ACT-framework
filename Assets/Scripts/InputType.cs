@@ -28,4 +28,6 @@ public enum InputType
     ForceActionAI,
     ForceActionBeCounter,
     ForceBeHit,
+
+    Death,
 }

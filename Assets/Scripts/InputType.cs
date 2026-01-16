@@ -11,6 +11,9 @@ public enum InputType
     Move,
     MoveCancel,
     ForceActionStrafe,
+
+    SwitchWeapon,
+
     Attack,
     AttackHold,
     AttackRelease,

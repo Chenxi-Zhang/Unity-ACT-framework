@@ -12,6 +12,7 @@ public class Actor : MonoBehaviour
     public ActorCameraStatus cameraStatus;
     public ActorAI actorAI;
     public ActorBeHit beHit;
+    public ActorWeapon weapon;
 
     private CharacterController _characterController;
     public CharacterController characterController

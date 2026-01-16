@@ -32,6 +32,9 @@ MonoBehaviour:
       value: MoveCancel
     value: {fileID: 11400000, guid: 22f38b2596b64fd44b3d23116140f0c9, type: 2}
   - key:
+      value: SwitchWeapon
+    value: {fileID: 11400000, guid: e069a620b2c792046886d764e472c6aa, type: 2}
+  - key:
       value: Attack
     value: {fileID: 11400000, guid: 202aa0bca54530449b8e972820952954, type: 2}
   - key:

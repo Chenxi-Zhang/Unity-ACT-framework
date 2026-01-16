@@ -177,6 +177,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4608225708291956490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6027053788948353927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5861669609816375929}
+  - component: {fileID: 8733936794711617309}
+  m_Layer: 6
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5861669609816375929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027053788948353927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4608225708291956490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8733936794711617309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027053788948353927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaef45d74287014a8fad252230aec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5236835919920874985}
+  weapons: []
+  weaponIds: []
 --- !u!1 &8462858482721576458
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +268,7 @@ Transform:
   - {fileID: 6640704119374347541}
   - {fileID: 6022180263184745734}
   - {fileID: 6964338987180495910}
+  - {fileID: 5861669609816375929}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5236835919920874985
@@ -244,6 +292,7 @@ MonoBehaviour:
   cameraStatus: {fileID: 1349787423670794043}
   actorAI: {fileID: 411417108126707610}
   beHit: {fileID: 1649198320801522232}
+  weapon: {fileID: 8733936794711617309}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -282,7 +331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
-  strafeMoveAnimation: {fileID: 0}
   maxBodyTwistAngle: 45
   turnBackAngle: 150
   stopTurnAngle: 5
@@ -300,7 +348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 6815510012680823109}
   actor: {fileID: 5236835919920874985}
-  Idle: {fileID: 0}
+  inputActionMgr:
+    defaultMapping: {fileID: 0}
   actorMovement: {fileID: 6809415184723294467}
   subActionRoot: {fileID: 6964338987180495910}
 --- !u!320 &6815510012680823109
@@ -378,18 +427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
-  hitDefenceData:
-    responseActions:
-    - shockType:
-        name: "\u98A4\u6296"
-      actionTimelineAsset: {fileID: 0}
-    - shockType:
-        name: "\u53D7\u51FB"
-      actionTimelineAsset: {fileID: 0}
-    - shockType:
-        name: "\u51FB\u98DE"
-      actionTimelineAsset: {fileID: 0}
-  hitCounters: []
+  shockTypeActionMappingManager:
+    defaultMapping: {fileID: 0}
+  hitCounterMappingManager:
+    defaultMapping: {fileID: 0}
 --- !u!114 &1349787423670794043
 MonoBehaviour:
   m_ObjectHideFlags: 0

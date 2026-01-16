@@ -130,98 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960b8da4bb4f15f488a8bcd603f073e3, type: 3}
   m_Name: DisableTurningToLockAsset
   m_EditorClassIdentifier: 
---- !u!114 &-7818051120190492707
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf03af11a3d42645af063f0c1fc373e, type: 3}
-  m_Name: Switch Weapon Track
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 8634018548604452406}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
-    m_Asset: {fileID: 3114653754000122622}
-    m_Duration: 3.699999999998
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -7818051120190492707}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: SwitchWeaponAsset
-  m_Markers:
-    m_Objects: []
 --- !u!114 &-7661728553060753120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +314,20 @@ MonoBehaviour:
     m_DisplayName: mixamo.com
   m_Markers:
     m_Objects: []
+--- !u!114 &-6722826956631324337
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043c8878114de5a4b9bd79fe70e25746, type: 3}
+  m_Name: ActionTransitionAsset(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  inputType:
+    value: SwitchWeapon
 --- !u!114 &-5590966707400003267
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,18 +889,6 @@ MonoBehaviour:
     m_DisplayName: DisableTurnAsset
   m_Markers:
     m_Objects: []
---- !u!114 &3114653754000122622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5595c65d0469c8a4b89944518d20fbc2, type: 3}
-  m_Name: SwitchWeaponAsset(Clone)(Clone)
-  m_EditorClassIdentifier: 
 --- !u!114 &3355247870907713937
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1097,6 +1007,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbc6d4619577634ca8d4ce5dc142e9b, type: 3}
   m_Name: InteractAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
+--- !u!114 &6565824805151808261
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d03ac95b77847642bfc3a1c5d811c7e, type: 3}
+  m_Name: Action Transition Track (8)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 8634018548604452406}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -6722826956631324337}
+    m_Duration: 3.699999999998
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6565824805151808261}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Input: SwitchWeapon'
+  m_Markers:
+    m_Objects: []
 --- !u!114 &7493524087197517696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,7 +1322,7 @@ MonoBehaviour:
   - {fileID: 7493524087197517696}
   - {fileID: -8373581168644880119}
   - {fileID: 7749866284545367815}
-  - {fileID: -7818051120190492707}
+  - {fileID: 6565824805151808261}
   m_FixedDuration: 2
   m_EditorSettings:
     m_Framerate: 60

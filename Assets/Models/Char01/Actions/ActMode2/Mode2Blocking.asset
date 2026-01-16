@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7b9de6d8e8bcd498bd88086a7a5683, type: 3}
   m_Name: AddHitCounterDefenceDataAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  mapping: {fileID: 11400000, guid: 9b8d9464dc3657045940a5a925c7a915, type: 2}
+  mapping: {fileID: 11400000, guid: df43ee187f615744eb19158f78e8865f, type: 2}
 --- !u!114 &-5665430068698126918
 MonoBehaviour:
   m_ObjectHideFlags: 1

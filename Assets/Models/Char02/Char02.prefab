@@ -128,6 +128,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Char02
       objectReference: {fileID: 0}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: weaponIds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: 'weaponIds.Array.data[0]'
+      value: w1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: weapons.Array.data[0].id
+      value: w1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: weapons.Array.data[0].inputMapping
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a244a21423b7684f9f42ad267b31786, type: 2}
+    - target: {fileID: 8733936794711617309, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: weapons.Array.data[0].hitShockMapping
+      value: 
+      objectReference: {fileID: 11400000, guid: 32c36569fb2e9b344b571da7dee85737, type: 2}
     - target: {fileID: 9120122603904476910, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_Avatar
       value: 

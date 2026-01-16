@@ -58,6 +58,10 @@ public class ActionPlayableDirector : BasePlayableDirector
 
     public void TriggerInputType(InputType inputType)
     {
+        if (inputType == InputType.SwitchWeapon)
+        {
+            actor.weapon.EquipNextWeapon();
+        }
         if (inputActionMgr.TryGetValue(inputType, out var value))
         {
             PlayAction(value);
@@ -80,6 +84,8 @@ public class ActionPlayableDirector : BasePlayableDirector
             DoPlayAction(action, initialTime);
         }
     }
+
+    public void PlayIdle() => DoPlayAction(Idle);
 
     private void DoPlayAction(ActionTimelineAsset action, double initialTime = 0)
     {

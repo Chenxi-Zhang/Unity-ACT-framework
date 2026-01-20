@@ -22,6 +22,7 @@ MonoBehaviour:
       maxHp: 0
     addHpRatioImmediately: 0.2
     addHpRatioDur: 0
+    sfx: {fileID: 11400000, guid: 033f480ccadbf0f41853860812c34caf, type: 2}
   - buffId: hpDur1
     duration: 10
     canRefresh: 1
@@ -31,3 +32,4 @@ MonoBehaviour:
       maxHp: 0
     addHpRatioImmediately: 0
     addHpRatioDur: 0.02
+    sfx: {fileID: 11400000, guid: 0ce6d2a350765cd49b5c6b9743c04395, type: 2}

@@ -18,6 +18,8 @@ public class BuffDataDrawer : PropertyDrawer
         }
         property.LayoutDrawRelative("addHpRatioImmediately");
         property.LayoutDrawRelative("addHpRatioDur");
+        EditorGUILayout.Space(10);
+        property.LayoutDrawRelative("sfx");
         property.serializedObject.ApplyModifiedProperties();
         EditorGUI.EndProperty();
     }

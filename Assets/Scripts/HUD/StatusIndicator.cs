@@ -57,4 +57,9 @@ public class StatusIndicator : MonoBehaviour
         statusBar.SetHpRatio(ratio);
     }
 
+    public void UpdateStatus(Actor actor)
+    {
+        statusBar.UpdateStatus(actor);
+    }
+
 }

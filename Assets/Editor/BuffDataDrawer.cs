@@ -20,6 +20,7 @@ public class BuffDataDrawer : PropertyDrawer
         property.LayoutDrawRelative("addHpRatioDur");
         EditorGUILayout.Space(10);
         property.LayoutDrawRelative("sfx");
+        property.LayoutDrawRelative("statusIcon");
         property.serializedObject.ApplyModifiedProperties();
         EditorGUI.EndProperty();
     }

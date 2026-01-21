@@ -8,34 +8,29 @@ public class ActorBuffs : MonoBehaviour
 {
     public Actor actor;
 
-    private Dictionary<string, int> staticBuffCounts = new();
     private Dictionary<string, BuffRuntimeData> staticBuffs = new();
 
-    private Dictionary<string, float> dynamicBuffCountdown = new();
     private Dictionary<string, BuffRuntimeData> dynamicBuffs = new();
 
     private void AddStaticBuff(string buffId, BuffData buffData)
     {
-        if (staticBuffCounts.ContainsKey(buffId))
+        if (staticBuffs.TryGetValue(buffId, out var buffRuntime))
         {
-            staticBuffCounts[buffId]++;
+            buffRuntime.AddStack();
         }
         else
         {
-            staticBuffCounts[buffId] = 1;
             staticBuffs[buffId] = buffData.CreateRuntimeData(actor);
         }
     }
 
     private void RemoveStaticBuff(string buffId)
     {
-        if (staticBuffCounts.ContainsKey(buffId))
+        if (staticBuffs.TryGetValue(buffId, out var buffRuntime))
         {
-            staticBuffCounts[buffId]--;
-            if (staticBuffCounts[buffId] <= 0)
+            buffRuntime.RemoveStack();
+            if (buffRuntime.NeedRemove())
             {
-                var buffRuntime = staticBuffs[buffId];
-                staticBuffCounts.Remove(buffId);
                 staticBuffs.Remove(buffId);
                 buffRuntime.Destroy();
             }
@@ -47,15 +42,11 @@ public class ActorBuffs : MonoBehaviour
         if (dynamicBuffs.ContainsKey(buffId))
         {
             var existingBuff = dynamicBuffs[buffId];
-            if (existingBuff.buff.canRefresh)
-            {
-                dynamicBuffCountdown[buffId] = duration;
-            }
+            existingBuff.Restart();
         }
         else
         {
             dynamicBuffs[buffId] = buffData.CreateRuntimeData(actor);
-            dynamicBuffCountdown[buffId] = duration;
         }
     }
 
@@ -65,7 +56,6 @@ public class ActorBuffs : MonoBehaviour
         {
             var buffRuntime = dynamicBuffs[buffId];
             dynamicBuffs.Remove(buffId);
-            dynamicBuffCountdown.Remove(buffId);
             buffRuntime.Destroy();
         }
     }
@@ -94,25 +84,32 @@ public class ActorBuffs : MonoBehaviour
         }
     }
 
+    public IEnumerable<BuffRuntimeData> GetAllBuffs()
+    {
+        foreach (var item in staticBuffs.Values)
+        {
+            yield return item;
+        }
+        foreach (var item in dynamicBuffs.Values)
+        {
+            yield return item;
+        }
+    }
+
     public void DoUpdate(float deltaTime)
     {
-        foreach (var kvp in dynamicBuffCountdown.ToList())
-        {
-            var buffId = kvp.Key;
-            var newTime = kvp.Value - deltaTime;
-            if (newTime <= 0)
-                RemoveDynamicBuff(buffId);
-            else
-                dynamicBuffCountdown[buffId] = newTime;
-        }
-
         foreach (var item in staticBuffs)
         {
             item.Value.DoUpdate(deltaTime);
         }
-        foreach (var item in dynamicBuffs)
+        foreach (var item in dynamicBuffs.ToList())
         {
             item.Value.DoUpdate(deltaTime);
+            if (item.Value.NeedRemove())
+            {
+                dynamicBuffs.Remove(item.Key);
+                item.Value.Destroy();
+            }
         }
     }
 

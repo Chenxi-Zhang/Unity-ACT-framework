@@ -85,6 +85,7 @@ public class ActorData : MonoBehaviour
     public void DoUpdate(float deltaTime)
     {
         statusIndicator.UpdateUIPosition();
+        statusIndicator.UpdateStatus(actor);
     }
 
     public void SwitchUseItem(ItemState newItem)

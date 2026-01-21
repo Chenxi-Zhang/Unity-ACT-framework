@@ -1,5 +1,6 @@
 
 using System;
+using UnityEngine;
 
 [Serializable]
 public class BuffData
@@ -14,12 +15,13 @@ public class BuffData
     public float addHpRatioDur;
 
     public SfxData sfx;
+    public Sprite statusIcon;
 
     public BuffRuntimeData CreateRuntimeData(Actor actor)
     {
         var data = actor.data;
         StartBuff(data);
-        BuffRuntimeData buffRuntime = new ();
+        BuffRuntimeData buffRuntime = new();
         buffRuntime.data = data;
         buffRuntime.buff = this;
         if (sfx != null)
@@ -43,14 +45,56 @@ public class BuffRuntimeData
     public BuffData buff;
     public SfxRuntimeData sfxRuntime;
 
+    private int stackCount;
+    private float elapsedTime;
+
+    public BuffRuntimeData()
+    {
+        stackCount = 1;
+        elapsedTime = 0f;
+    }
+
+    public void Restart()
+    {
+        if (!buff.canRefresh)
+            return;
+        elapsedTime = 0f;
+    }
+
+    public float GetFillAmount()
+    {
+        if (buff.IsStatic)
+            return 0f;
+        return elapsedTime / buff.duration;
+    }
+
     public void Destroy()
     {
         sfxRuntime?.Destroy();
         sfxRuntime = null;
     }
 
+    public void AddStack() => stackCount++;
+    public void RemoveStack() => stackCount--;
+
+    public bool NeedRemove()
+    {
+        if (buff.IsStatic)
+        {
+            return stackCount <= 0;
+        }
+        else
+        {
+            return elapsedTime >= buff.duration;
+        }
+    }
+
     public void DoUpdate(float deltaTime)
     {
+        if (!buff.IsStatic)
+            elapsedTime += deltaTime;
+        if (NeedRemove())
+            return;
         if (buff.addHpRatioDur > 0)
         {
             var addHp = data.RuntimeData.maxHp * (buff.addHpRatioDur * deltaTime);

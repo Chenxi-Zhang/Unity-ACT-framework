@@ -108,7 +108,7 @@ MonoBehaviour:
   destroyDelay: 1
   isAttaching: 1
   bindingInfo:
-    bindingPath: ModelRoot/Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+    bindingPath: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     positionOffset: {x: -0.7341624, y: 0.4050518, z: -0.10301594}
     rotationOffset: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-2813949254503902688

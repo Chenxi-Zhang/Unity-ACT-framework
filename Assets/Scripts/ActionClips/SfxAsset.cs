@@ -51,7 +51,14 @@ public class SfxClip : ActionClipBase
 #endif
         if (sfxObj != null)
         {
-            GameObject.Destroy(sfxObj, destroyDelay);
+            if (sfxObj.TryGetComponent<BaseSfxContainer>(out var sfxContainer))
+            {
+                sfxContainer.Destroy(destroyDelay);
+            }
+            else
+            {
+                GameObject.Destroy(sfxObj, destroyDelay);
+            }
             sfxObj = null;
         }
     }

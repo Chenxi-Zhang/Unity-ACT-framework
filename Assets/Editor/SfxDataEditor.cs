@@ -2,10 +2,10 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(SfxAsset))]
-public class SfxAssetEditor : Editor
+[CustomEditor(typeof(SfxData))]
+public class SfxDataEditor : Editor
 {
-    SfxAsset sfxAsset;
+    SfxData sfxData;
     Actor actor;
     BindingInfoEditorHelper bindingInfoHelper;
 
@@ -17,14 +17,15 @@ public class SfxAssetEditor : Editor
     {
         SceneView.duringSceneGui -= OnDuringSceneGUI;
         SceneView.duringSceneGui += OnDuringSceneGUI;
-        sfxAsset = target as SfxAsset;
+        sfxData = target as SfxData;
         actor = SceneObjectTool.GetComponentInPrefabStage<Actor>();
-        if (sfxAsset == null || actor == null)
+        if (sfxData == null)
             return;
-
         prefabProp = serializedObject.FindProperty("sfxPrefab");
         destroyDelayProp = serializedObject.FindProperty("destroyDelay");
         isAttachingProp = serializedObject.FindProperty("isAttaching");
+        if (actor == null)
+            return;
         var bindingInfoProp = serializedObject.FindProperty("bindingInfo");
         bindingInfoHelper = new BindingInfoEditorHelper(actor.transform, bindingInfoProp);
     }
@@ -32,7 +33,7 @@ public class SfxAssetEditor : Editor
     void OnDisable()
     {
         SceneView.duringSceneGui -= OnDuringSceneGUI;
-        sfxAsset = null;
+        sfxData = null;
         actor = null;
         bindingInfoHelper = default;
         prefabProp = null;
@@ -44,16 +45,16 @@ public class SfxAssetEditor : Editor
     {
         if (Application.isPlaying)
             return;
-        if (sfxAsset == null || actor == null)
+        if (sfxData == null || actor == null)
             return;
         serializedObject.Update();
-        bindingInfoHelper.OnDuringSceneGUI(view, sfxAsset.bindingInfo);
+        bindingInfoHelper.OnDuringSceneGUI(view, sfxData.bindingInfo);
         serializedObject.ApplyModifiedProperties();
     }
 
     public override void OnInspectorGUI()
     {
-        if (sfxAsset == null || actor == null)
+        if (sfxData == null)
             return;
         serializedObject.Update();
         EditorGUILayout.PropertyField(prefabProp);

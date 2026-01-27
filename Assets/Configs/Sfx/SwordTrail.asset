@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36869b0d17b02f4195b5d6fd0ad8375, type: 3}
+  m_Name: SwordTrail
+  m_EditorClassIdentifier: 
+  sfxPrefab: {fileID: 5718752220298089111, guid: e4f23c33baf59b94096ced656faf7cf8, type: 3}
+  destroyDelay: 5
+  isAttaching: 1
+  bindingInfo:
+    bindingPath: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+    positionOffset: {x: -0.7339548, y: 0.39237142, z: -0.10813696}
+    rotationOffset: {x: 0, y: 0, z: 0, w: 0}

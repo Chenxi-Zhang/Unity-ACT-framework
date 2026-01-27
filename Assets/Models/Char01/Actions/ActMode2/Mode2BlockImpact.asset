@@ -357,10 +357,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061cd6380bc695747aa844c081e77358, type: 3}
   m_Name: SfxAsset
   m_EditorClassIdentifier: 
-  sfxPrefab: {fileID: 4891224100838784573, guid: ff290bc46604f7d4ab70f165a9fb83e5, type: 3}
-  destroyDelay: 5
-  isAttaching: 0
-  bindingInfo:
-    bindingPath: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/Shield
-    positionOffset: {x: 0.015398058, y: 0.009460026, z: 0.11605983}
-    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  sfxData: {fileID: 11400000, guid: 5b59e4c6b73a3624cb7fc26ae3918c7d, type: 2}

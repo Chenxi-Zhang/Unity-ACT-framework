@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686063635925403315, guid: c550364e42c0ae84f9de69eb3755cad3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7778518969655713845, guid: c550364e42c0ae84f9de69eb3755cad3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -152,7 +152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 83101244621102021, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.072795354
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 83101244621102021, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83101244621102021, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000003736631
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 210542983974722162, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -297,6 +297,10 @@ PrefabInstance:
     - target: {fileID: 6918184121097613791, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: attackLayer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918184121097613791, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: attackData.shockType.name
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7768682964656669747, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: strafeMoveAnimation

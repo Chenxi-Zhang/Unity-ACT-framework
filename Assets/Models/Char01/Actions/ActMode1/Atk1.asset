@@ -1,6 +1,141 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7015871791662040001
+--- !u!114 &-4600535495885534587
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8880c6020e0b7e458697ab6c9ca6445, type: 3}
+  m_Name: Sfx Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 6435525106928391343}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.8
+    m_ClipIn: 0
+    m_Asset: {fileID: -2907802598458737383}
+    m_Duration: 0.30000000000000004
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4600535495885534587}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SfxAsset
+  m_Markers:
+    m_Objects: []
+--- !u!114 &-2907802598458737383
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061cd6380bc695747aa844c081e77358, type: 3}
+  m_Name: SfxAsset
+  m_EditorClassIdentifier: 
+  sfxPrefab: {fileID: 5718752220298089111, guid: e4f23c33baf59b94096ced656faf7cf8, type: 3}
+  destroyDelay: 1
+  isAttaching: 1
+  bindingInfo:
+    bindingPath: ModelRoot/Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+    positionOffset: {x: -0.7341624, y: 0.4050518, z: -0.10301594}
+    rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &-2813949254503902688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5cead090ef4234abdff46334b024d2, type: 3}
+  m_Name: AttackAsset
+  m_EditorClassIdentifier: 
+  attackData:
+    hitCounters: []
+    shockType:
+      name: "\u51FB\u98DE"
+    damageMultiplier: 1
+  configs:
+  - path: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+    position: {x: -0.30317616, y: 0.08473478, z: 0.055924617}
+    rotation: {x: -0.012017806, y: -0.10429552, z: -0.31186482, w: 0.9443084}
+    height: 1.3353305
+    radius: 0.18042544
+    isDisabled: 0
+--- !u!114 &-2371461072430778003
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22,12 +157,12 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.8
+    m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 8134233312061555496}
-    m_Duration: 0.30000000000000004
+    m_Asset: {fileID: 6298846547217799739}
+    m_Duration: 1.8333333333333333
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -7015871791662040001}
+    m_ParentTrack: {fileID: -2371461072430778003}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -92,30 +227,6 @@ MonoBehaviour:
     m_DisplayName: CameraControllAsset
   m_Markers:
     m_Objects: []
---- !u!114 &-2813949254503902688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5cead090ef4234abdff46334b024d2, type: 3}
-  m_Name: AttackAsset
-  m_EditorClassIdentifier: 
-  attackData:
-    hitCounters: []
-    shockType:
-      name: "\u51FB\u98DE"
-    damageMultiplier: 1
-  configs:
-  - path: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
-    position: {x: -0.30317616, y: 0.08473478, z: 0.055924617}
-    rotation: {x: -0.012017806, y: -0.10429552, z: -0.31186482, w: 0.9443084}
-    height: 1.3353305
-    radius: 0.18042544
-    isDisabled: 0
 --- !u!114 &-754325065227780422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,6 +352,25 @@ MonoBehaviour:
   weight: 1
   mask: {fileID: 0}
   isAdditive: 0
+--- !u!114 &6298846547217799739
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71aabd2956e9bc345a4108ee508e69f4, type: 3}
+  m_Name: CameraControllAsset
+  m_EditorClassIdentifier: 
+  isOverride: 0
+  isCameraUpdating: 0
+  cameraUpdateData:
+    blendTime: 0
+    changeCameraDistance: 0
+    cameraDistance: 0
+  impulse: 0
 --- !u!114 &6435525106928391343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +387,8 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: 9099151809678324837}
   - {fileID: -754325065227780422}
-  - {fileID: -7015871791662040001}
+  - {fileID: -4600535495885534587}
+  - {fileID: -2371461072430778003}
   m_FixedDuration: 1.8333333333333333
   m_EditorSettings:
     m_Framerate: 60

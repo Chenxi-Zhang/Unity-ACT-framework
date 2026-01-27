@@ -8,6 +8,7 @@ public class ActorWeapon : MonoBehaviour
     public Actor actor;
     public List<WeaponState> weapons = new();
     private WeaponState weaponNow;
+    public WeaponState WeaponNow => weaponNow;
 
     public List<string> weaponIds = new();
 
@@ -77,6 +78,7 @@ public class ActorWeapon : MonoBehaviour
 public class WeaponState
 {
     public string id;
+    public WeaponData weaponData;
     public List<GameObject> weapons;
     public InputTypeActionMapping inputMapping;
     public ShockTypeActionMapping hitShockMapping;

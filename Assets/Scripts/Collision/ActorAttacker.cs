@@ -8,6 +8,7 @@ public class ActorAttacker : MonoBehaviour
 {
     public Actor actor;
 
+    public WeaponState weaponState;
     public AttackData attackData;
     [LayerField]
     public int attackLayer = 0;
@@ -42,5 +43,12 @@ public class ActorAttacker : MonoBehaviour
     public void BeCounter(Actor enemy, AttackBeCounterData attackBeCounterData, DefenceData defenceData)
     {
         actor.logicInput.InputForceAction(InputType.ForceActionBeCounter, attackBeCounterData.beCounterAction);
+    }
+
+    public float GetDamage()
+    {
+        if (weaponState == null)
+            return 0f;
+        return weaponState.weaponData.baseDamage * attackData.damageMultiplier;
     }
 }

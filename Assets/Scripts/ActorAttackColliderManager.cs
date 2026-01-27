@@ -112,11 +112,12 @@ public partial class ActorAttackColliderManager : MonoBehaviour
         colliderHolder.EnableCollider(config);
     }
 
-    public void EnableColliders(List<AttackColliderConfig> configs, AttackData attackData)
+    public void EnableColliders(List<AttackColliderConfig> configs, AttackData attackData, WeaponState weaponState)
     {
         if (configs == null || configs.Count == 0)
             return;
         attacker.attackData = attackData;
+        attacker.weaponState = weaponState;
         for (int i = 0; i < configs.Count; i++)
         {
             EnableCollider(configs[i]);

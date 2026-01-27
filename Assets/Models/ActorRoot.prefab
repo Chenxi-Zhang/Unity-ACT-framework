@@ -146,6 +146,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4608225708291956490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3232338776649992229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210542983974722162}
+  - component: {fileID: 1340295430486240454}
+  m_Layer: 6
+  m_Name: StatusRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &210542983974722162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232338776649992229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4608225708291956490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1340295430486240454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232338776649992229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3265f50464634294c804c004811d4784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4867050245317529667, guid: 8eb529c2d16b624459a22fa0802c3c3b, type: 3}
 --- !u!1 &5325260693381165148
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +269,55 @@ MonoBehaviour:
   actor: {fileID: 5236835919920874985}
   weapons: []
   weaponIds: []
+--- !u!1 &6270820117268906749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3543357327767557324}
+  - component: {fileID: 3842617590596877355}
+  m_Layer: 6
+  m_Name: Data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3543357327767557324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270820117268906749}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4608225708291956490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3842617590596877355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270820117268906749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10944ab6693f1144d9eb1cff565124d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5236835919920874985}
+  statusIndicator: {fileID: 1340295430486240454}
+  staticData:
+    hp: 100
+    maxHp: 100
 --- !u!1 &8462858482721576458
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,10 +359,12 @@ Transform:
   m_Children:
   - {fileID: 83101244621102021}
   - {fileID: 2452590396307348609}
+  - {fileID: 210542983974722162}
   - {fileID: 6640704119374347541}
   - {fileID: 6022180263184745734}
   - {fileID: 6964338987180495910}
   - {fileID: 5861669609816375929}
+  - {fileID: 3543357327767557324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5236835919920874985
@@ -293,6 +389,7 @@ MonoBehaviour:
   actorAI: {fileID: 411417108126707610}
   beHit: {fileID: 1649198320801522232}
   weapon: {fileID: 8733936794711617309}
+  data: {fileID: 3842617590596877355}
 --- !u!143 &2609364236034990598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -409,10 +506,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5236835919920874985}
+  weaponState:
+    id: 
+    weaponData:
+      baseDamage: 0
+      counters: []
+    weapons: []
+    inputMapping: {fileID: 0}
+    hitShockMapping: {fileID: 0}
   attackData:
     hitCounters: []
     shockType:
       name: 
+    damageMultiplier: 1
   attackLayer: 0
 --- !u!114 &1649198320801522232
 MonoBehaviour:

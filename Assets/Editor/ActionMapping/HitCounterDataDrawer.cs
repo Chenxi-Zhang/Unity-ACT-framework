@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(HitCounterData))]
+[CustomPropertyDrawer(typeof(HitCounterInfo))]
 public class HitCounterDataDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

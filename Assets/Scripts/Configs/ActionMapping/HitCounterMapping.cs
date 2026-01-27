@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HitCounterMapping", menuName = "Configs/HitCounterMapping")]
-public class HitCounterMapping : BaseItemMapping<HitCounterType, HitCounterData>
+public class HitCounterMapping : BaseItemMapping<HitCounterType, HitCounterInfo>
 {
     protected override int CompareKey(HitCounterType a, HitCounterType b)
     {
@@ -12,9 +12,12 @@ public class HitCounterMapping : BaseItemMapping<HitCounterType, HitCounterData>
 }
 
 [Serializable]
-public class HitCounterData
+public class HitCounterInfo
 {
     public bool ignoreHit = false;
     public DefenceData defenceData;
     public ShockTypeActionMapping shockTypeActionMapping;
+
+    [NonSerialized]
+    public HitCounterType hitCounter;
 }

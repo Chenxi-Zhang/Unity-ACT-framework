@@ -22,6 +22,7 @@ MonoBehaviour:
       beCounterAction: {fileID: 0}
     shockType:
       name: "\u53D7\u51FB"
+    damageMultiplier: 15
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
@@ -275,6 +276,7 @@ MonoBehaviour:
   layerMixer: 0
   weight: 1
   mask: {fileID: 0}
+  isAdditive: 0
 --- !u!114 &-936551884937596504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +329,7 @@ MonoBehaviour:
     hitCounters: []
     shockType:
       name: "\u51FB\u98DE"
+    damageMultiplier: 25
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
@@ -464,6 +467,7 @@ MonoBehaviour:
       beCounterAction: {fileID: 0}
     shockType:
       name: "\u98A4\u6296"
+    damageMultiplier: 10
   configs:
   - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}

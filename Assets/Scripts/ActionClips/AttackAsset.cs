@@ -54,7 +54,7 @@ class AttackClip : ActionClipBase
     public override void OnActionPlay()
     {
         var attackColliderManager = actor.attackColliderManager;
-        attackColliderManager.EnableColliders(configs, attackData);
+        attackColliderManager.EnableColliders(configs, attackData, actor.weapon.WeaponNow);
     }
 
     public override void OnActionPause()

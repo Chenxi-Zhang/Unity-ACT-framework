@@ -6,6 +6,7 @@ public class AttackData
 {
     public AttackBeCounterData[] hitCounters;
     public ShockType shockType;
+    public float damageMultiplier = 1f;
 }
 
 [Serializable]

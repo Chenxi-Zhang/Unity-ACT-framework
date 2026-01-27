@@ -13,6 +13,7 @@ public class Actor : MonoBehaviour
     public ActorAI actorAI;
     public ActorBeHit beHit;
     public ActorWeapon weapon;
+    public ActorData data;
 
     private CharacterController _characterController;
     public CharacterController characterController
@@ -34,6 +35,7 @@ public class Actor : MonoBehaviour
         actionPlayableDirector.DoUpdate(deltaTime);
         movement.DoUpdate(deltaTime);
         animationSimpleBlender.DoUpdate(deltaTime);
+        data.DoUpdate(deltaTime);
     }
 
 }

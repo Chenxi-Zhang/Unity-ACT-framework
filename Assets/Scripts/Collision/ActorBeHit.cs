@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class ActorBeHit : MonoBehaviour, IHittable
@@ -11,7 +12,7 @@ public class ActorBeHit : MonoBehaviour, IHittable
     public HitCounterMappingManager hitCounterMappingManager = new();
 
     // 根据攻击带有的hitCounter属性，查找角色在防御上是否有对应的hitCounter，从而获取对应的防御数据
-    private bool TryGetHitCounterDefenceData(AttackData attackData, out HitCounterData hitCounterData, out AttackBeCounterData attackBeCounterData)
+    private bool TryGetHitCounterDefenceData(AttackData attackData, out HitCounterInfo hitCounterData, out AttackBeCounterData attackBeCounterData)
     {
         hitCounterData = null;
         attackBeCounterData = null;
@@ -25,6 +26,7 @@ public class ActorBeHit : MonoBehaviour, IHittable
             if (hitCounterMappingManager.TryGetValue(attackHitCounter.hitCounter, out var mapping))
             {
                 hitCounterData = mapping;
+                hitCounterData.hitCounter = attackHitCounter.hitCounter;
                 attackBeCounterData = attackHitCounter;
                 return true;
             }
@@ -59,6 +61,24 @@ public class ActorBeHit : MonoBehaviour, IHittable
         {
             actor.logicInput.InputForceAction(InputType.ForceBeHit, action);
         }
+        HandleDamage(attacker, hitCounterData);
     }
 
+    private void HandleDamage(ActorAttacker attacker, HitCounterInfo hitCounterData)
+    {
+        var damage = attacker.GetDamage();
+        var finalDamage = GetFinalDamage(damage, hitCounterData);
+        actor.data.AddHp(-finalDamage);
+    }
+
+    private float GetFinalDamage(float damage, HitCounterInfo hitCounterInfo)
+    {
+        if (hitCounterInfo == null)
+            return damage;
+        var weaponData = actor.data.WeaponData;
+        if (weaponData == null)
+            return damage;
+        var hitCounterDefRatio = weaponData.GetCounterDefRatio(hitCounterInfo.hitCounter);
+        return damage * (1f - hitCounterDefRatio);
+    }
 }

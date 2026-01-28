@@ -36,6 +36,7 @@ public class Actor : MonoBehaviour
         movement.DoUpdate(deltaTime);
         animationSimpleBlender.DoUpdate(deltaTime);
         data.DoUpdate(deltaTime);
+        cameraStatus.DoUpdate(deltaTime);
     }
 
 }

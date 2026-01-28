@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FollowCameraController : BaseCameraController
 {
+    public CameraManager manager;
     private CinemachineOrbitalFollow positionControl;
 
     private ref InputAxis VerticalAxis => ref positionControl.VerticalAxis;
@@ -38,4 +39,10 @@ public class FollowCameraController : BaseCameraController
         VerticalAxis.TriggerRecentering();
         HorizontalAxis.TriggerRecentering();
     }
+
+    public void SetCameraUpdateData(CameraUpdateData cameraUpdateData)
+    {
+        positionControl.Radius = cameraUpdateData.cameraDistance;
+    }
+
 }

@@ -1,10 +1,10 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(CinemachineVirtualCameraBase))]
 public abstract class BaseCameraController : MonoBehaviour
 {
-    public CameraManager manager;
 
     private CinemachineVirtualCameraBase _virtualCamera;
     public CinemachineVirtualCameraBase virtualCamera

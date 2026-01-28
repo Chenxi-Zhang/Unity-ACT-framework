@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LockCameraController : BaseCameraController, IInputAxisOwner
 {
+    public CameraManager manager;
+    private CinemachinePositionComposer positionComposer;
 
     private InputAxis xAxis = new() { Range = new Vector2(-999, 999) };
     private InputAxis yAxis = new() { Range = new Vector2(-999, 999) };
@@ -13,6 +15,11 @@ public class LockCameraController : BaseCameraController, IInputAxisOwner
     public float changeLockMinSpeed = 80f;
 
     private bool isChanging = true;
+
+    void Awake()
+    {
+        positionComposer = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachinePositionComposer;
+    }
 
     public void GetInputAxes(List<IInputAxisOwner.AxisDescriptor> axes)
     {
@@ -72,5 +79,10 @@ public class LockCameraController : BaseCameraController, IInputAxisOwner
         {
             SetLookingTarget(actor.cameraStatus.LockingTarget.cameraStatus.cameraTarget);
         }
+    }
+
+    public void SetCameraUpdateData(CameraUpdateData cameraUpdateData)
+    {
+        positionComposer.CameraDistance = cameraUpdateData.cameraDistance;
     }
 }

@@ -16,8 +16,20 @@ public class ActorCameraStatus : MonoBehaviour
     public Actor LockingTarget { get; private set; }
     public bool IsLocking => LockingTarget != null;
 
+    [Header("Camera Settings")]
+    public OverrideCameraController overrideCameraController;
+    public BoolStatus isOverriding = new();
+    public bool isImpulse = false;
+    private CameraUpdateData defaultData;
+    public CameraUpdateData currentData;
+
     // 存储候选目标
     private List<Actor> targetCandidates = new();
+
+    void Awake()
+    {
+        overrideCameraController.gameObject.SetActive(false);
+    }
 
     public void CollectTargetInView(Vector3 searchOrigin, Vector3 forward, float searchRadius, float fieldOfViewAngle, LayerMask layerMask)
     {
@@ -176,4 +188,26 @@ public class ActorCameraStatus : MonoBehaviour
     {
         LockingTarget = null;
     }
+
+    public void InitCameraData(CameraUpdateData defaultData)
+    {
+        this.defaultData = defaultData;
+        currentData = defaultData;
+    }
+
+    public void UpdateCameraData(CameraUpdateData newData)
+    {
+        currentData.BlendTo(newData);
+    }
+
+    public void ResetCameraData()
+    {
+        currentData.BlendTo(defaultData);
+    }
+
+    public void DoUpdate(float deltaTime)
+    {
+        currentData.Update(deltaTime);
+    }
+
 }

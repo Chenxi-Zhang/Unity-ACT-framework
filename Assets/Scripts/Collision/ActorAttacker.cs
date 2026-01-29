@@ -8,7 +8,9 @@ public class ActorAttacker : MonoBehaviour
 {
     public Actor actor;
 
+    [NonSerialized]
     public WeaponState weaponState;
+    [NonSerialized]
     public AttackData attackData;
     [LayerField]
     public int attackLayer = 0;

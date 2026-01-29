@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[ExecuteInEditMode]
 [RequireComponent(typeof(Animator))]
 public class ActorMovement : MonoBehaviour
 {
@@ -109,15 +108,6 @@ public class ActorMovement : MonoBehaviour
         controller.Move(new Vector3(deltaPos.x, 0, deltaPos.z));
         modelPosY += deltaPos.y;
         UpdateY();
-#if UNITY_EDITOR
-        if (isRecording)
-        {
-            // 记录动画的位移和旋转
-            previewDeltaPosition += deltaPos;
-            previewRootDeltaRotation *= rootDeltaRot;
-            previewDeltaRotation *= modelDeltaRot;
-        }
-#endif
     }
 
     private Vector3 lookingPosition = Vector3.zero;
@@ -155,10 +145,6 @@ public class ActorMovement : MonoBehaviour
 
     void UpdateY()
     {
-#if UNITY_EDITOR
-        if (!Application.isPlaying)
-            return;
-#endif
         if (controller.isGrounded)
         {
             velocity = Vector3.zero;
@@ -175,42 +161,6 @@ public class ActorMovement : MonoBehaviour
         modelRotation = Quaternion.identity;
         modelPosY = 0;
     }
-
-#if UNITY_EDITOR
-    bool isRecording = false;
-    protected Vector3 previewDeltaPosition;
-    protected Quaternion previewRootDeltaRotation;
-    protected Quaternion previewDeltaRotation;
-
-    public void StartRecordMovement()
-    {
-        if (isRecording)
-        {
-            ResetTransform();
-        }
-        isRecording = false;
-        if (Application.isPlaying)
-            return;
-        isRecording = true;
-        previewDeltaPosition = Vector3.zero;
-        previewRootDeltaRotation = Quaternion.identity;
-        previewDeltaRotation = Quaternion.identity;
-    }
-
-    public void ResetTransform()
-    {
-        if (!isRecording)
-            return;
-        isRecording = false;
-        if (Application.isPlaying)
-            return;
-        // Reset the animator's position and rotation
-        controller.Move(-previewDeltaPosition);
-        actorRotation *= Quaternion.Inverse(previewRootDeltaRotation);
-        modelRotation *= Quaternion.Inverse(previewDeltaRotation);
-    }
-#endif
-
 
     private Vector3Clamper forceMoveClamper;
     private float forceMoveLastTime;
@@ -247,10 +197,6 @@ public class ActorMovement : MonoBehaviour
             forceMoveLastTime = Time.time;
             var delta = posNow - posLast;
             controller.Move(delta);
-#if UNITY_EDITOR
-            previewDeltaPosition += delta;
-            // Root rotation consider later.
-#endif
         }
     }
 

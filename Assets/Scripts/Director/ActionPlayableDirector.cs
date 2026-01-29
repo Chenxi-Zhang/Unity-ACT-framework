@@ -8,7 +8,7 @@ public class ActionPlayableDirector : BasePlayableDirector
     public Actor actor;
     public InputTypeActionMappingManager inputActionMgr = new();
     public ActionTimelineAsset Idle => inputActionMgr.GetIdleAction();
-    public ActorMovement actorMovement;
+    public ActorMovement actorMovement => actor.movement;
 
     private ActionTimelineAsset playingAction;
     public ActionTimelineAsset PlayingAction => playingAction;

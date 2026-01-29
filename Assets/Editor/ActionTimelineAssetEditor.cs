@@ -114,7 +114,9 @@ class ActionTimelineAssetEditor : Editor
         TimelineHelper.SelectDirector(timelineAsset);
         // 打开Timeline窗口并加载此资源
         var window = TimelineEditor.GetOrCreateWindow();
+        window.locked = false;
         window.SetTimeline(timelineAsset);
         window.Focus();
+        EditorApplication.delayCall += () => window.locked = true;
     }
 }

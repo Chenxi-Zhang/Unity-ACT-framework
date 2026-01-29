@@ -24,7 +24,7 @@ MonoBehaviour:
       name: "\u53D7\u51FB"
     damageMultiplier: 15
   configs:
-  - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+  - path: Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
     rotation: {x: -0.015493367, y: -0.06139998, z: -0.24417645, w: 0.967661}
     height: 1.0878386
@@ -331,7 +331,7 @@ MonoBehaviour:
       name: "\u51FB\u98DE"
     damageMultiplier: 25
   configs:
-  - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+  - path: Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
     rotation: {x: -0.015493367, y: -0.06139998, z: -0.24417645, w: 0.967661}
     height: 1.0878386
@@ -469,7 +469,7 @@ MonoBehaviour:
       name: "\u98A4\u6296"
     damageMultiplier: 10
   configs:
-  - path: ModelRoot/Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+  - path: Eve By J.Gonzales/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.2802254, y: 0.15103988, z: -0.040561847}
     rotation: {x: -0.015493367, y: -0.06139998, z: -0.24417645, w: 0.967661}
     height: 1.0878386

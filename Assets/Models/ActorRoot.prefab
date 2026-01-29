@@ -88,76 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852b7e94b621e654faa25c123db6066e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2765375162966618575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 83101244621102021}
-  - component: {fileID: 6809415184723294467}
-  - component: {fileID: 9120122603904476910}
-  m_Layer: 0
-  m_Name: ModelRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &83101244621102021
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765375162966618575}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4608225708291956490}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6809415184723294467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765375162966618575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c9aef5253f8657408dda1f5eb1fc6f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actor: {fileID: 5236835919920874985}
-  maxHorizontalAngle: 70
-  maxVerticalAngle: 50
---- !u!95 &9120122603904476910
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765375162966618575}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3080288274779335561
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +375,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 83101244621102021}
   - {fileID: 2452590396307348609}
   - {fileID: 210542983974722162}
   - {fileID: 6640704119374347541}
@@ -469,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicInput: {fileID: 7768682964656669747}
-  movement: {fileID: 6809415184723294467}
+  movement: {fileID: 0}
   actionPlayableDirector: {fileID: 4708077285437426794}
   animationSimpleBlender: {fileID: 6352356825172373307}
   attackColliderManager: {fileID: 3031405196969237351}
@@ -536,7 +465,6 @@ MonoBehaviour:
   actor: {fileID: 5236835919920874985}
   inputActionMgr:
     defaultMapping: {fileID: 0}
-  actorMovement: {fileID: 6809415184723294467}
   subActionRoot: {fileID: 6964338987180495910}
 --- !u!320 &6815510012680823109
 PlayableDirector:
@@ -567,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab93d49cd67acc64a83d6b3d38446633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9120122603904476910}
+  animator: {fileID: 0}
 --- !u!114 &3031405196969237351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +574,11 @@ MonoBehaviour:
     m_Bits: 64
   lockFieldOfView: 90
   overrideCameraController: {fileID: 6307812957993308476}
+  isImpulse: 0
+  currentData:
+    blendTime: 0
+    changeCameraDistance: 0
+    cameraDistance: 0
 --- !u!1 &9042992521635395862
 GameObject:
   m_ObjectHideFlags: 0

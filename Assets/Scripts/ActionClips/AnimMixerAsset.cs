@@ -21,14 +21,6 @@ public class AnimMixerAsset : PlayableAsset
         mixerClip.mask = mask;
         mixerClip.isAdditive = isAdditive;
         mixerClip.weight = weight;
-#if UNITY_EDITOR
-        // 编辑器里，记录起始位置
-        var actor = owner.GetComponent<Actor>();
-        if (actor)
-        {
-            actor.movement.StartRecordMovement();
-        }
-#endif
         return playable;
     }
 }
@@ -41,18 +33,6 @@ public class AnimMixerClip : ActionClipBase
     public float weight;
     public AvatarMask mask;
     public bool isAdditive;
-
-#if UNITY_EDITOR
-    public override void OnPlayableDestroy(Playable playable)
-    {
-        if (layerMixer)
-            return;
-        if (actor)
-        {
-            actor.movement.ResetTransform();
-        }
-    }
-#endif
 
     public override void OnActionPause()
     {

@@ -110,7 +110,7 @@ MonoBehaviour:
       name: "\u51FB\u98DE"
     damageMultiplier: 1
   configs:
-  - path: ModelRoot/Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
+  - path: Maria J J Ong/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Sword
     position: {x: -0.30317616, y: 0.08473478, z: 0.055924617}
     rotation: {x: -0.012017806, y: -0.10429552, z: -0.31186482, w: 0.9443084}
     height: 1.3353305

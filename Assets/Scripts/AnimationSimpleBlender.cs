@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
-[ExecuteInEditMode]
 public class AnimationSimpleBlender : MonoBehaviour
 {
     public Animator animator;
@@ -334,6 +333,13 @@ public class AnimationSimpleBlender : MonoBehaviour
             }
         }
         UpdateLayerMixerWeight();
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            UnityEditor.AnimationMode.SamplePlayableGraph(Graph, 0, 0);
+            return;
+        }
+#endif
         Graph.Evaluate();
     }
 

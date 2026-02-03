@@ -227,4 +227,12 @@ public class PlayerInputController : MonoBehaviour, InputSystem_Actions.IPlayerA
             controllingActor.logicInput.InputButton(InputType.SwitchWeapon);
         }
     }
+
+    public void OnUseItem(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            controllingActor.logicInput.InputButton(InputType.UseItem);
+        }
+    }
 }

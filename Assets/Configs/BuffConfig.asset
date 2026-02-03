@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb357d98c708f40965a8a9b19b308d, type: 3}
+  m_Name: BuffConfig
+  m_EditorClassIdentifier: 
+  buffDatas:
+  - buffId: hp1
+    duration: 0
+    canRefresh: 0
+    changeRuntimeData: 0
+    runtimeData:
+      hp: 0
+      maxHp: 0
+    addHpRatioImmediately: 0.2
+    addHpRatioDur: 0
+  - buffId: hpDur1
+    duration: 10
+    canRefresh: 1
+    changeRuntimeData: 0
+    runtimeData:
+      hp: 0
+      maxHp: 0
+    addHpRatioImmediately: 0
+    addHpRatioDur: 0.02

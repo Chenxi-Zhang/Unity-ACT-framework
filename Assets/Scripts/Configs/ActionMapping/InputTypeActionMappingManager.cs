@@ -2,7 +2,7 @@
 using System;
 
 [Serializable]
-public class InputTypeActionMappingManager : BaseItemMappingManager<InputTypeActionMapping, EnumByName<InputType>, ActionTimelineAsset>
+public class InputTypeActionMappingManager : BaseItemMappingManager<IInputTypeActionMapping, EnumByName<InputType>, ActionTimelineAsset>
 {
 
     public ActionTimelineAsset GetIdleAction()

@@ -67,5 +67,5 @@ MonoBehaviour:
   - key:
       value: Death
     value: {fileID: 11400000, guid: 9f6110b964c94fb4c9e746b46be58844, type: 2}
-  Idle: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
-  Strafe: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}
+  idle: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
+  strafe: {fileID: 11400000, guid: f2760fd138727e44d83cd6bdec7121c6, type: 2}

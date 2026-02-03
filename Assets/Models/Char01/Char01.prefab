@@ -194,6 +194,14 @@ PrefabInstance:
       propertyPath: m_MinMoveDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3842617590596877355, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: itemToUse.action
+      value: 
+      objectReference: {fileID: 11400000, guid: a9d10df47e0a0c640b72da021de09636, type: 2}
+    - target: {fileID: 3842617590596877355, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: initialItem.action
+      value: 
+      objectReference: {fileID: 11400000, guid: a9d10df47e0a0c640b72da021de09636, type: 2}
     - target: {fileID: 4608225708291956490, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -239,6 +247,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f3a846af7d98ed64394310127e40880a, type: 2}
     - target: {fileID: 4708077285437426794, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: defaultInputMapping
+      value: 
+      objectReference: {fileID: 11400000, guid: d8aa446d07b7c984b88fb7ce65fcc4df, type: 2}
+    - target: {fileID: 4708077285437426794, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: inputActionMgr.defaultMapping
       value: 
       objectReference: {fileID: 11400000, guid: d8aa446d07b7c984b88fb7ce65fcc4df, type: 2}
@@ -261,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 6815510012680823109, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 6435525106928391343, guid: fbb8ce88dba366d41b8092d1b9f44408, type: 2}
+      objectReference: {fileID: -6477144842858814191, guid: a9d10df47e0a0c640b72da021de09636, type: 2}
     - target: {fileID: 6815510012680823109, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: m_SceneBindings.Array.size
       value: 2
@@ -482,7 +494,7 @@ MonoBehaviour:
     AmplitudeGain: 1
     FrequencyGain: 1
     Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+    m_NoiseOffsets: {x: -395.95618, y: 902.0941, z: 722.1642}
 --- !u!114 &7731350798028116085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6395804960957249665, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}

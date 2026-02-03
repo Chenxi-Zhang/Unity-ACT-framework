@@ -21,10 +21,14 @@ public class ActorWeapon : MonoBehaviour
                 weaponObj.SetActive(false);
             }
         }
+    }
+
+    public void InitWeapon()
+    {
         if (weaponIds.Count > 0)
         {
             weaponNow = weapons.Find(w => w.id == weaponIds[0]);
-            SetWeapon(weaponNow);
+            SetWeapon(weaponNow, false);
         }
     }
 
@@ -40,7 +44,7 @@ public class ActorWeapon : MonoBehaviour
         actor.beHit.shockTypeActionMappingManager.RemoveMapping(weaponState.hitShockMapping);
     }
 
-    private void SetWeapon(WeaponState weaponState)
+    private void SetWeapon(WeaponState weaponState, bool playIdle = true)
     {
         foreach (var weapon in weaponState.weapons)
         {
@@ -49,7 +53,10 @@ public class ActorWeapon : MonoBehaviour
         actor.actionPlayableDirector.inputActionMgr.AddMapping(weaponState.inputMapping);
         actor.beHit.shockTypeActionMappingManager.AddMapping(weaponState.hitShockMapping);
         // 切换武器强制播放Idle，主要打断当前模组动作，理论上应该播放，切换时的动作，在下一个动作模组中对应的那一个.以后再完善
-        actor.actionPlayableDirector.PlayIdle();
+        if (playIdle)
+        {
+            actor.actionPlayableDirector.PlayIdle();
+        }
     }
 
     public void EquipWeapon(string weaponId)

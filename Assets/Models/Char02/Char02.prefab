@@ -93,6 +93,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}
     - target: {fileID: 4708077285437426794, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
+      propertyPath: defaultInputMapping
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a244a21423b7684f9f42ad267b31786, type: 2}
+    - target: {fileID: 4708077285437426794, guid: 08bc289d87fe7a44d9a4c33775abc2bb, type: 3}
       propertyPath: inputActionMgr.default.Idle
       value: 
       objectReference: {fileID: 11400000, guid: 5b7d44018e3164241aba2eb116aee602, type: 2}

@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class ActorData : MonoBehaviour
@@ -11,12 +12,20 @@ public class ActorData : MonoBehaviour
     [SerializeField]
     private RuntimeData staticData;
     private RuntimeData runtimeData;
+    public RuntimeData RuntimeData => runtimeData;
     public WeaponData WeaponData => actor.weapon.WeaponNow?.weaponData;
+
+    [SerializeField]
+    private ItemState initialItem;
+    private ItemState itemToUse;
+
+    private float hpAccumulator = 0f;
 
     void Start()
     {
         statusIndicator.DoStart();
         Initialize();
+        SwitchUseItem(initialItem);
     }
 
     public void Initialize()
@@ -64,12 +73,31 @@ public class ActorData : MonoBehaviour
 
     public void AddHp(float value)
     {
-        SetHp(runtimeData.hp + Mathf.RoundToInt(value));
+        hpAccumulator += value;
+        var intValue = Mathf.FloorToInt(hpAccumulator);
+        if (intValue != 0)
+        {
+            SetHp(runtimeData.hp + intValue);
+            hpAccumulator -= intValue;
+        }
     }
 
     public void DoUpdate(float deltaTime)
     {
         statusIndicator.UpdateUIPosition();
+    }
+
+    public void SwitchUseItem(ItemState newItem)
+    {
+        if (itemToUse != null)
+        {
+            actor.actionPlayableDirector.inputActionMgr.RemoveMapping(itemToUse.ItemActionMapping);
+        }
+        itemToUse = newItem;
+        if (itemToUse != null)
+        {
+            actor.actionPlayableDirector.inputActionMgr.AddMapping(itemToUse.ItemActionMapping);
+        }
     }
 
 }

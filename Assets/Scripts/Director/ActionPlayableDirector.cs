@@ -6,6 +6,7 @@ using UnityEngine.Playables;
 public class ActionPlayableDirector : BasePlayableDirector
 {
     public Actor actor;
+    public InputTypeActionMapping defaultInputMapping;
     public InputTypeActionMappingManager inputActionMgr = new();
     public ActionTimelineAsset Idle => inputActionMgr.GetIdleAction();
     public ActorMovement actorMovement => actor.movement;
@@ -34,6 +35,8 @@ public class ActionPlayableDirector : BasePlayableDirector
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        inputActionMgr.AddMapping(defaultInputMapping);
+        actor.weapon.InitWeapon();
         playableDirector.extrapolationMode = DirectorWrapMode.None;
         // playableDirector.stopped += OnPlayableDirectorStopped;
         playableDirector.timeUpdateMode = DirectorUpdateMode.Manual;

@@ -13,6 +13,7 @@ public enum InputType
     ForceActionStrafe,
 
     SwitchWeapon,
+    UseItem,
 
     Attack,
     AttackHold,

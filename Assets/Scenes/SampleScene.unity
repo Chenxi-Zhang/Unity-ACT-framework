@@ -293,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitCounterConfig: {fileID: 11400000, guid: b8681343d1259404db0cc871cf9f039d, type: 2}
   shockConfig: {fileID: 11400000, guid: d51e3f0ac834c854e90322d7632448c6, type: 2}
+  buffConfig: {fileID: 11400000, guid: eea024ae4ec590547ad2de8e0e6275f9, type: 2}
 --- !u!4 &228999918
 Transform:
   m_ObjectHideFlags: 0

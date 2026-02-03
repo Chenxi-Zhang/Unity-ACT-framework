@@ -13,8 +13,8 @@ public class InputTypeActionMappingEditor : BaseItemMappingEditor
 
     private void OnEnable()
     {
-        idleProperty = serializedObject.FindProperty("Idle");
-        strafeProperty = serializedObject.FindProperty("Strafe");
+        idleProperty = serializedObject.FindProperty("idle");
+        strafeProperty = serializedObject.FindProperty("strafe");
     }
 
     public override void OnInspectorGUI()

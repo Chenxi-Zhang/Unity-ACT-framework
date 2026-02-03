@@ -35,6 +35,9 @@ MonoBehaviour:
       value: SwitchWeapon
     value: {fileID: 11400000, guid: 79ab9512ccaaaa3429b07edbdf1fe787, type: 2}
   - key:
+      value: UseItem
+    value: {fileID: 0}
+  - key:
       value: Attack
     value: {fileID: 11400000, guid: fbb8ce88dba366d41b8092d1b9f44408, type: 2}
   - key:
@@ -67,5 +70,5 @@ MonoBehaviour:
   - key:
       value: Death
     value: {fileID: 11400000, guid: cf975861337f8c14e953a51199771347, type: 2}
-  Idle: {fileID: 11400000, guid: f3a846af7d98ed64394310127e40880a, type: 2}
-  Strafe: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}
+  idle: {fileID: 11400000, guid: f3a846af7d98ed64394310127e40880a, type: 2}
+  strafe: {fileID: 11400000, guid: 870c40533a96c4b419c028a131ddf206, type: 2}

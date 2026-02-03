@@ -24,5 +24,6 @@ public class SingletonHolder : MonoBehaviour
 
     public HitCounterConfig hitCounterConfig;
     public ShockConfig shockConfig;
+    public BuffConfig buffConfig;
 
 }

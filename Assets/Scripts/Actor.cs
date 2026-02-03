@@ -14,6 +14,7 @@ public class Actor : MonoBehaviour
     public ActorBeHit beHit;
     public ActorWeapon weapon;
     public ActorData data;
+    public ActorBuffs buffs;
 
     private CharacterController _characterController;
     public CharacterController characterController
@@ -35,6 +36,7 @@ public class Actor : MonoBehaviour
         actionPlayableDirector.DoUpdate(deltaTime);
         movement.DoUpdate(deltaTime);
         animationSimpleBlender.DoUpdate(deltaTime);
+        buffs.DoUpdate(deltaTime);
         data.DoUpdate(deltaTime);
         cameraStatus.DoUpdate(deltaTime);
     }

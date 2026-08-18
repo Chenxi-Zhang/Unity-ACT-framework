@@ -1,3 +1,5 @@
+
+
 # Unity ACT Framework
 
 A Unity-based ACT framework that uses Timeline to author action events and drive gameplay through an event-centric architecture.
@@ -72,7 +74,7 @@ A Unity-based ACT framework that uses Timeline to author action events and drive
 
 - Unity Timeline: 核心动画和状态管理
 - Unity Input System: 现代化输入处理
-- Cinemachine: 相机系统（推荐）
+- Cinemachine: 相机系统（必需）
 - NodeCanvas: AI 行为系统（可选）
 
 ## Architecture Highlights
@@ -86,4 +88,3 @@ A Unity-based ACT framework that uses Timeline to author action events and drive
 **事件驱动**: 系统之间通过事件通信，而不是直接引用。输入事件触发动作队列，碰撞事件触发战斗响应，Timeline 事件驱动状态转换。
 
 **手动 Timeline 控制**: 自定义的 PlayableDirector 实现，提供精确的帧级执行控制，支持暂停/慢动作等效果。
-
